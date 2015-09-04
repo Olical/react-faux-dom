@@ -3,12 +3,12 @@ var ReactFauxDOM = require('..')
 
 test('has a create method', function (t) {
   t.plan(1)
-  t.equal(typeof ReactFauxDOM.createElement, 'function', 'imported and has a function')
+  t.equal(typeof ReactFauxDOM.createElement, 'function')
 })
 
-test('creates an element instance with a nodeName', function (t) {
+test('creates an element instance with a type', function (t) {
   t.plan(2)
   var el = ReactFauxDOM.createElement('div')
   t.ok(el instanceof ReactFauxDOM.Element)
-  t.equal(el.nodeName, 'div')
+  t.equal(el.type, 'div')
 })

@@ -1,10 +1,14 @@
-function Element (nodeName) {
-  this.nodeName = nodeName
+var Element = require('./Element')
+var Window = require('./Window')
+
+var ReactFauxDOM = {
+  Element: Element,
+  defaultView: Window,
+  createElement: function createElement (type) {
+    return new Element(type)
+  }
 }
 
-module.exports = {
-  createElement: function (nodeName) {
-    return new Element(nodeName)
-  },
-  Element: Element
-}
+Element.prototype.ownerDocument = ReactFauxDOM
+
+module.exports = ReactFauxDOM

@@ -1,0 +1,113 @@
+var test = require('tape')
+var d3 = require('d3')
+var ReactFauxDOM = require('..')
+
+function mk () {
+  var sel = d3.select(ReactFauxDOM.createElement('div'))
+  sel.ownerDocument = ReactFauxDOM
+  return sel
+}
+
+test('modify properties', function (t) {
+  var el = mk()
+    .attr('width', 100)
+    .attr('height', 200)
+    .node()
+
+  t.plan(2)
+  t.equal(el.getAttribute('width'), 100)
+  t.equal(el.getAttribute('height'), 200)
+})
+
+test('append children', function (t) {
+  var el = mk()
+
+  el
+    .append('p')
+    .attr('foo', 'bar')
+
+  el = el.node()
+
+  t.plan(3)
+  t.equal(el.children.length, 1)
+  t.equal(el.children[0].getAttribute('foo'), 'bar')
+  t.equal(el.children[0].parentNode, el)
+})
+
+test('classes', function (t) {
+  var el = mk()
+    .classed('foo bar baz', true)
+    .classed('bar', false)
+    .node()
+
+  t.plan(1)
+  t.equal(el.props.className, 'foo baz')
+})
+
+test('html', function (t) {
+  var el = mk()
+    .html('Hello, World!')
+    .node()
+
+  t.plan(1)
+  t.equal(el.text, 'Hello, World!')
+})
+
+test('some event support', function (t) {
+  var el = mk()
+    .on('mouseover', function () {})
+    .node()
+
+  t.plan(1)
+  t.equal(typeof el.props.onMouseOver, 'function')
+})
+
+test('next/previousSibling (used by order?)', function (t) {
+  var el = mk()
+  var first = el.append('p').node()
+  var second = el.append('p').node()
+
+  t.plan(2)
+  t.equal(first.nextSibling, second)
+  t.equal(second.previousSibling, first)
+})
+
+test('removing a child', function (t) {
+  var el = mk()
+  var p = el.append('p')
+  p.remove()
+  el = el.node()
+
+  t.plan(1)
+  t.equal(el.children.length, 0)
+})
+
+test('styles', function (t) {
+  var el = mk()
+    .style({
+      'stroke-width': '2px',
+      opacity: 0.5
+    })
+
+  t.plan(2)
+  t.deepEqual(el.node().props.style, {
+    strokeWidth: '2px',
+    opacity: 0.5
+  })
+  t.equal(el.style('stroke-width'), '2px')
+})
+
+test('text', function (t) {
+  var el = mk()
+    .text('Hello, World!')
+    .node()
+
+  t.plan(1)
+  t.equal(el.text, 'Hello, World!')
+})
+
+test.skip('insert before', function (t) {
+})
+
+test.skip('selections', function (t) {
+})
