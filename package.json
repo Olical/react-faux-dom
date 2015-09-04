@@ -2,7 +2,7 @@
   "name": "react-faux-dom",
   "version": "1.0.0",
   "description": "DOM like data structure to be mutated by D3 et al, then rendered to React elements",
-  "main": "src/react-faux-dom.js",
+  "main": "src/ReactFauxDOM.js",
   "scripts": {
     "test": "standard && tape './test/**/*.js' | faucet"
   },
@@ -29,12 +29,8 @@
   "devDependencies": {
     "faucet": "0.0.1",
     "nodemon": "^1.4.1",
+    "react": "^0.13.3",
     "standard": "^5.1.0",
     "tape": "^4.2.0"
-  },
-  "standard": {
-    "globals": [
-      "define"
-    ]
   }
 }
