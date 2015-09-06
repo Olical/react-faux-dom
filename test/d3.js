@@ -1,12 +1,5 @@
 var test = require('tape')
-var d3 = require('d3')
-var ReactFauxDOM = require('..')
-
-function mk () {
-  var sel = d3.select(ReactFauxDOM.createElement('div'))
-  sel.ownerDocument = ReactFauxDOM
-  return sel
-}
+var mk = require('./utils/mk')
 
 test('modify properties', function (t) {
   var el = mk()

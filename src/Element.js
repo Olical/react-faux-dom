@@ -1,5 +1,7 @@
-var querySelectorAll = require('query-selector')
+var React = require('react')
+var clone = require('lodash.clone')
 var camelCase = require('lodash.camelcase')
+var querySelectorAll = require('query-selector')
 
 function Element (nodeName, parentNode) {
   this.nodeName = nodeName
@@ -188,6 +190,24 @@ Element.prototype.getElementById = function (id) {
       })[0] || null
     }
   }
+}
+
+Element.prototype.toReact = function (index) {
+  index = index || 0
+  var props = this.props
+
+  function uniqueKey () {
+    return 'faux-dom-' + index
+  }
+
+  if (typeof props.key === 'undefined') {
+    props = clone(props)
+    props.key = uniqueKey()
+  }
+
+  return React.createElement(this.nodeName, props, this.text || this.children.map(function (el, i) {
+    return el.toReact(i)
+  }))
 }
 
 Object.defineProperties(Element.prototype, {
