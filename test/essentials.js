@@ -6,9 +6,9 @@ test('has a create method', function (t) {
   t.equal(typeof ReactFauxDOM.createElement, 'function')
 })
 
-test('creates an element instance with a type', function (t) {
+test('creates an element instance with a nodeName', function (t) {
   t.plan(2)
   var el = ReactFauxDOM.createElement('div')
   t.ok(el instanceof ReactFauxDOM.Element)
-  t.equal(el.type, 'div')
+  t.equal(el.nodeName, 'div')
 })

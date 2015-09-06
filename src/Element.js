@@ -1,7 +1,9 @@
+var querySelectorAll = require('query-selector')
 var camelCase = require('lodash.camelcase')
 
-function Element (type) {
-  this.type = type
+function Element (nodeName, parentNode) {
+  this.nodeName = nodeName
+  this.parentNode = parentNode
   this.children = []
   var props = this.props = {
     style: {}
@@ -20,6 +22,8 @@ function Element (type) {
     }
   }
 }
+
+Element.prototype.nodeType = 1
 
 // This was easy to do with Vim.
 // Just saying.
@@ -67,19 +71,30 @@ Element.prototype.attributeNameMappings = {
   'class': 'className'
 }
 
-Element.prototype.attributeToPropName = function attributeToPropName (name) {
+Element.prototype.attributeToPropName = function (name) {
   return this.attributeNameMappings[name] || name
 }
 
-Element.prototype.setAttribute = function setAttribute (name, value) {
+Element.prototype.setAttribute = function (name, value) {
   this.props[this.attributeToPropName(name)] = value
 }
 
-Element.prototype.getAttribute = function getAttribute (name) {
+Element.prototype.getAttribute = function (name) {
   return this.props[this.attributeToPropName(name)]
 }
 
-Element.prototype.removeAttribute = function removeAttribute (name) {
+Element.prototype.getAttributeNode = function (name) {
+  var value = this.getAttribute(name)
+
+  if (typeof value !== 'undefined') {
+    return {
+      value: value,
+      specified: true
+    }
+  }
+}
+
+Element.prototype.removeAttribute = function (name) {
   delete this.props[this.attributeToPropName(name)]
 }
 
@@ -87,24 +102,92 @@ Element.prototype.eventToPropName = function (name) {
   return this.eventNameMappings[name] || name
 }
 
-Element.prototype.addEventListener = function addEventListener (name, fn) {
+Element.prototype.addEventListener = function (name, fn) {
   this.props[this.eventToPropName(name)] = fn
 }
 
-Element.prototype.removeEventListener = function removeEventListener (name, fn) {
+Element.prototype.removeEventListener = function (name, fn) {
   delete this.props[this.eventToPropName(name)]
 }
 
-Element.prototype.appendChild = function appendChild (type) {
-  var el = new Element(type)
+Element.prototype.appendChild = function (el) {
   el.parentNode = this
   this.children.push(el)
   return el
 }
 
-Element.prototype.removeChild = function removeChild (child) {
+Element.prototype.insertBefore = function (el, before) {
+  var index = this.children.indexOf(before)
+  el.parentNode = this
+
+  if (index !== -1) {
+    this.children.splice(index, 0, el)
+  } else {
+    this.children.push(el)
+  }
+
+  return el
+}
+
+Element.prototype.removeChild = function (child) {
   var target = this.children.indexOf(child)
   this.children.splice(target, 1)
+}
+
+Element.prototype.querySelector = function () {
+  return this.querySelectorAll.apply(this, arguments)[0]
+}
+
+Element.prototype.querySelectorAll = function (selector) {
+  return querySelectorAll(selector, this)
+}
+
+Element.prototype.getElementsByTagName = function (nodeName) {
+  var children = this.children
+
+  if (children.length === 0) {
+    return []
+  } else {
+    var matches
+
+    if (nodeName !== '*') {
+      matches = children.filter(function (el) {
+        return el.nodeName === nodeName
+      })
+    } else {
+      matches = children
+    }
+
+    var childMatches = children.map(function (el) {
+      return el.getElementsByTagName(nodeName)
+    })
+
+    return matches.concat.apply(matches, childMatches)
+  }
+}
+
+Element.prototype.getElementById = function (id) {
+  var children = this.children
+
+  if (children.length === 0) {
+    return null
+  } else {
+    var match = children.filter(function (el) {
+      return el.getAttribute('id') === id
+    })[0]
+
+    if (match) {
+      return match
+    } else {
+      var childMatches = children.map(function (el) {
+        return el.getElementById(id)
+      })
+
+      return childMatches.filter(function (match) {
+        return match !== null
+      })[0] || null
+    }
+  }
 }
 
 Object.defineProperties(Element.prototype, {

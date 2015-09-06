@@ -106,8 +106,35 @@ test('text', function (t) {
   t.equal(el.text, 'Hello, World!')
 })
 
-test.skip('insert before', function (t) {
+test('selection by class', function (t) {
+  var el = mk()
+
+  el.append('p').classed('one', true)
+  var two = el.append('p').classed('two', true).node()
+  el.append('p').classed('three', true)
+
+  var match = el.select('.two').node()
+
+  t.plan(1)
+  t.equal(match, two)
 })
 
-test.skip('selections', function (t) {
+test('selection by id', function (t) {
+  var el = mk()
+  var original = el.append('div').append('p').attr('id', 'find-me').node()
+  var selected = el.select('#find-me').node()
+
+  t.plan(1)
+  t.equal(selected, original)
+})
+
+test('insert before', function (t) {
+  var el = mk()
+  el.append('p')
+  var span = el.insert('span', 'p').node()
+
+  el = el.node()
+
+  t.plan(1)
+  t.equal(el.children[0], span)
 })

@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "lodash.camelcase": "^3.0.1",
+    "query-selector": "^1.0.9",
     "react": "^0.13.3"
   }
 }
