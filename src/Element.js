@@ -243,4 +243,22 @@ Object.defineProperties(Element.prototype, {
   }
 })
 
+// These NS methods are called by things like D3 if it spots a namespace.
+// Like xlink:href. I don't care about namespaces, so these functions have NS aliases created.
+var namespaceMethods = [
+  'setAttribute',
+  'getAttribute',
+  'getAttributeNode',
+  'removeAttribute',
+  'getElementsByTagName',
+  'getElementById'
+]
+
+namespaceMethods.forEach(function (name) {
+  var fn = Element.prototype[name]
+  Element.prototype[name + 'NS'] = function () {
+    return fn.apply(this, Array.prototype.slice.call(arguments, 1))
+  }
+})
+
 module.exports = Element

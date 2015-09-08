@@ -131,3 +131,12 @@ test('insert before', function (t) {
   t.plan(1)
   t.equal(el.children[0], span)
 })
+
+test('NS methods behave the same', function (t) {
+  var el = mk()
+    .attr('xlink:href', 'localhost')
+    .node()
+
+  t.plan(1)
+  t.equal(el.getAttributeNS('xlink', 'href'), 'localhost')
+})
