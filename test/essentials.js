@@ -12,3 +12,12 @@ test('creates an element instance with a nodeName', function (t) {
   t.ok(el instanceof ReactFauxDOM.Element)
   t.equal(el.nodeName, 'div')
 })
+
+test('hyphenated properties are camel cased', function (t) {
+  var el = ReactFauxDOM.createElement('div')
+  el.setAttribute('text-align', 'right')
+  t.plan(3)
+  t.equal(el.getAttribute('text-align'), 'right')
+  t.equal(el.getAttribute('textAlign'), 'right')
+  t.equal(el.toReact().props.textAlign, 'right')
+})

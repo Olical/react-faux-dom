@@ -74,7 +74,7 @@ Element.prototype.attributeNameMappings = {
 }
 
 Element.prototype.attributeToPropName = function (name) {
-  return this.attributeNameMappings[name] || name
+  return this.attributeNameMappings[name] || camelCase(name)
 }
 
 Element.prototype.setAttribute = function (name, value) {
