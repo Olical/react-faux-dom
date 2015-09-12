@@ -82,11 +82,10 @@ test('styles', function (t) {
       opacity: 0.5
     })
 
-  t.plan(2)
-  t.deepEqual(el.node().props.style, {
-    strokeWidth: '2px',
-    opacity: 0.5
-  })
+  t.plan(3)
+  var styles = el.node().props.style
+  t.equal(styles.strokeWidth, '2px')
+  t.equal(styles.opacity, 0.5)
   t.equal(el.style('stroke-width'), '2px')
 })
 

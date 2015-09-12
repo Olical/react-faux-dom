@@ -37,7 +37,8 @@
   "dependencies": {
     "lodash.camelcase": "^3.0.1",
     "lodash.clone": "^3.0.3",
-    "query-selector": "^1.0.9"
+    "query-selector": "^1.0.9",
+    "style-attr": "^1.0.1"
   },
   "peerDependencies": {
     "react": "0.x"

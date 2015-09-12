@@ -1,5 +1,6 @@
 var React = require('react')
 var clone = require('lodash.clone')
+var styleAttr = require('style-attr')
 var camelCase = require('lodash.camelcase')
 var querySelectorAll = require('query-selector')
 
@@ -7,22 +8,22 @@ function Element (nodeName, parentNode) {
   this.nodeName = nodeName
   this.parentNode = parentNode
   this.children = []
-  var props = this.props = {
-    style: {}
-  }
   this.text = ''
-
-  this.style = {
-    setProperty: function (name, value) {
-      props.style[camelCase(name)] = value
-    },
-    getProperty: function (name) {
-      return props.style[camelCase(name)]
-    },
-    removeProperty: function (name) {
-      delete props.style[camelCase(name)]
+  var props = this.props = {
+    style: {
+      setProperty: function (name, value) {
+        props.style[camelCase(name)] = value
+      },
+      getProperty: function (name) {
+        return props.style[camelCase(name)]
+      },
+      removeProperty: function (name) {
+        delete props.style[camelCase(name)]
+      }
     }
   }
+
+  this.style = props.style
 }
 
 Element.prototype.nodeType = 1
@@ -78,7 +79,15 @@ Element.prototype.attributeToPropName = function (name) {
 }
 
 Element.prototype.setAttribute = function (name, value) {
-  this.props[this.attributeToPropName(name)] = value
+  if (name === 'style' && typeof value === 'string') {
+    var styles = styleAttr.parse(value)
+
+    for (var key in styles) {
+      this.style.setProperty(key, styles[key])
+    }
+  } else {
+    this.props[this.attributeToPropName(name)] = value
+  }
 }
 
 Element.prototype.getAttribute = function (name) {

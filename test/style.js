@@ -1,0 +1,27 @@
+var test = require('tape')
+var mk = require('./utils/mk')
+
+test('simple style string sets the property', function (t) {
+  var el = mk().node()
+  el.setAttribute('style', 'color:red')
+  t.plan(1)
+  t.equal(el.style.color, 'red')
+})
+
+test('setting a complex style string', function (t) {
+  var el = mk().node()
+  el.setAttribute('style', 'color: red; height: 300px; width: 200px; text-align: left')
+  t.plan(4)
+  t.equal(el.style.color, 'red')
+  t.equal(el.style.height, '300px')
+  t.equal(el.style.width, '200px')
+  t.equal(el.style.textAlign, 'left')
+})
+
+test('setting a property appears in React', function (t) {
+  var el = mk().node()
+  el.style.backgroundColor = 'red'
+  var r = el.toReact()
+  t.plan(1)
+  t.equal(r.props.style.backgroundColor, 'red')
+})
