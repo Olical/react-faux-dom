@@ -39,3 +39,17 @@ test('auto default keys', function (t) {
   t.equal(tree.props.children[2].key, 'faux-dom-2')
   t.equal(tree.props.children[2].props.foo, 'bar')
 })
+
+test('pre-built React elements elements are rendered into the tree', function (t) {
+  var el = mk().node()
+  var sub = mk()
+    .attr('foo', 'bar')
+    .node()
+    .toReact()
+
+  el.appendChild(sub)
+  var tree = el.toReact()
+
+  t.plan(1)
+  t.equal(tree.props.children[0].props.foo, 'bar')
+})

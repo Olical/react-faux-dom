@@ -219,7 +219,11 @@ Element.prototype.toReact = function (index) {
   }
 
   return React.createElement(this.nodeName, props, this.text || this.children.map(function (el, i) {
-    return el.toReact(i)
+    if (el instanceof Element) {
+      return el.toReact(i)
+    } else {
+      return el
+    }
   }))
 }
 
