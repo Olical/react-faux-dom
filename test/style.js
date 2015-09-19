@@ -25,3 +25,13 @@ test('setting a property appears in React', function (t) {
   t.plan(1)
   t.equal(r.props.style.backgroundColor, 'red')
 })
+
+test('style object methods do not leak through', function (t) {
+  var el = mk().node()
+  el.style.backgroundColor = 'red'
+  var r = el.toReact()
+  t.plan(3)
+  t.equal(typeof r.props.style.setProperty, 'undefined')
+  t.equal(typeof r.props.style.getProperty, 'undefined')
+  t.equal(typeof r.props.style.removeProperty, 'undefined')
+})

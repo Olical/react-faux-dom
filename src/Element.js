@@ -212,6 +212,10 @@ Element.prototype.toReact = function (index) {
   if (typeof props.key === 'undefined') {
     props = clone(props)
     props.key = uniqueKey()
+
+    delete props.style.setProperty
+    delete props.style.getProperty
+    delete props.style.removeProperty
   }
 
   return React.createElement(this.nodeName, props, this.text || this.children.map(function (el, i) {
