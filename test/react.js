@@ -40,7 +40,7 @@ test('auto default keys', function (t) {
   t.equal(tree.props.children[2].props.foo, 'bar')
 })
 
-test('pre-built React elements elements are rendered into the tree', function (t) {
+test('pre-built React elements are rendered into the tree', function (t) {
   var el = mk().node()
   var sub = mk()
     .attr('foo', 'bar')
