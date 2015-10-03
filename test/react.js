@@ -53,3 +53,11 @@ test('pre-built React elements are rendered into the tree', function (t) {
   t.plan(1)
   t.equal(tree.props.children[0].props.foo, 'bar')
 })
+
+test('toReact does not mutate the state', function (t) {
+  var el = mk().node()
+  t.plan(2)
+  t.equal(typeof el.props.style.setProperty, 'function')
+  el.toReact()
+  t.equal(typeof el.props.style.setProperty, 'function')
+})
