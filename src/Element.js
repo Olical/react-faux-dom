@@ -203,20 +203,20 @@ Element.prototype.getElementById = function (id) {
 
 Element.prototype.toReact = function (index) {
   index = index || 0
-  var props = this.props
+  var props = clone(this.props)
+  props.style = clone(props.style)
 
   function uniqueKey () {
     return 'faux-dom-' + index
   }
 
   if (typeof props.key === 'undefined') {
-    props = clone(props)
     props.key = uniqueKey()
-
-    delete props.style.setProperty
-    delete props.style.getProperty
-    delete props.style.removeProperty
   }
+
+  delete props.style.setProperty
+  delete props.style.getProperty
+  delete props.style.removeProperty
 
   return React.createElement(this.nodeName, props, this.text || this.children.map(function (el, i) {
     if (el instanceof Element) {

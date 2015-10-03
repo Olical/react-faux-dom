@@ -35,3 +35,14 @@ test('style object methods do not leak through', function (t) {
   t.equal(typeof r.props.style.getProperty, 'undefined')
   t.equal(typeof r.props.style.removeProperty, 'undefined')
 })
+
+test('when using a key the style object is still cleaned', function (t) {
+  var el = mk().node()
+  el.setAttribute('key', 'test')
+  el.style.backgroundColor = 'red'
+  var r = el.toReact()
+  t.plan(3)
+  t.equal(typeof r.props.style.setProperty, 'undefined')
+  t.equal(typeof r.props.style.getProperty, 'undefined')
+  t.equal(typeof r.props.style.removeProperty, 'undefined')
+})
