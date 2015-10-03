@@ -1,6 +1,6 @@
 {
   "name": "react-faux-dom",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "DOM like data structure to be mutated by D3 et al, then rendered to React elements",
   "main": "src/ReactFauxDOM.js",
   "scripts": {
