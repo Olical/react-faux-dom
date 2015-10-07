@@ -113,8 +113,10 @@ Element.prototype.eventToPropName = function (name) {
   return this.eventNameMappings[name] || name
 }
 
-Element.prototype.addEventListener = function (name, fn) {
-  this.props[this.eventToPropName(name)] = fn
+Element.prototype.addEventListener = function (name, fn, d) {
+  this.props[this.eventToPropName(name)] = function (e) {
+    fn(e, d)
+  }
 }
 
 Element.prototype.removeEventListener = function (name, fn) {
