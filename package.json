@@ -41,6 +41,6 @@
     "style-attr": "^1.0.1"
   },
   "peerDependencies": {
-    "react": "0.x"
+    "react": "0.x || ^0.14.0-rc1"
   }
 }
