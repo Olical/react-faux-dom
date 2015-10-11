@@ -46,3 +46,10 @@ test('when using a key the style object is still cleaned', function (t) {
   t.equal(typeof r.props.style.getProperty, 'undefined')
   t.equal(typeof r.props.style.removeProperty, 'undefined')
 })
+
+test('vendor prefixed styles are correctly camel-cased', function (t) {
+  var el = mk().node()
+  el.setAttribute('style', '-webkit-transition: opacity 100ms ease')
+  t.plan(1)
+  t.equal(el.style.WebkitTransition, 'opacity 100ms ease')
+})
