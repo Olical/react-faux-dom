@@ -123,7 +123,15 @@ Element.prototype.addEventListener = function (name, fn) {
 }
 
 Element.prototype.removeEventListener = function (name, fn) {
-  delete this.props[this.eventToPropName(name)]
+  var listeners = this.eventListeners[this.eventToPropName(name)]
+
+  if (listeners) {
+    var match = listeners.indexOf(fn)
+
+    if (match !== -1) {
+      listeners.splice(match, 1)
+    }
+  }
 }
 
 Element.prototype.appendChild = function (el) {
