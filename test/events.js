@@ -1,3 +1,4 @@
+var d3 = require('d3')
 var test = require('tape')
 var sinon = require('sinon')
 var mk = require('./utils/mk')
@@ -30,6 +31,28 @@ test('executing listeners', function (t) {
   t.ok(listeners.onClick[1]._.calledOnce)
 })
 
-// test('executed with native event')
-// test('event contains React event (this is cyclic)')
-// test('removing listeners')
+test('executed with native event (which contains synthetic)', function (t) {
+  var el = mkWithEvents().node()
+  var props = el.toReact().props
+  var syntheticEvent = {
+    isSynthetic: true,
+    nativeEvent: {
+      isNative: true
+    }
+  }
+  props.onClick(syntheticEvent)
+  var event = d3.event
+  t.plan(2)
+  t.ok(event.isNative)
+  t.ok(event.syntheticEvent.isSynthetic)
+})
+
+test('removing listeners', function (t) {
+  var el = mkWithEvents()
+  var eventListeners = el.node().eventListeners
+  var remaining = eventListeners.onClick[1]
+  el.node().removeEventListener('click', eventListeners.onClick[0])
+  t.plan(2)
+  t.equal(eventListeners.onClick.length, 1)
+  t.equal(eventListeners.onClick[0], remaining)
+})

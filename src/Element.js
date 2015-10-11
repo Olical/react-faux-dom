@@ -224,10 +224,16 @@ Element.prototype.toReact = function (index) {
   delete props.style.removeProperty
 
   assign(props, mapValues(this.eventListeners, function (listeners) {
-    return function () {
-      var args = arguments
+    return function (syntheticEvent) {
+      var event
+
+      if (syntheticEvent) {
+        event = syntheticEvent.nativeEvent
+        event.syntheticEvent = syntheticEvent
+      }
+
       mapValues(listeners, function (listener) {
-        listener.apply(null, args)
+        listener(event)
       })
     }
   }))
