@@ -1,3 +1,7 @@
+# 2.0.1
+
+ * Fix [#10] (vendor prefixed styles not being camel-cased correctly)
+
 # 2.0.0
 
  * Fix [#9] (make events behave like the real DOM)
