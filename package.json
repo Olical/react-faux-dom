@@ -1,6 +1,6 @@
 {
   "name": "react-faux-dom",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "DOM like data structure to be mutated by D3 et al, then rendered to React elements",
   "main": "src/ReactFauxDOM.js",
   "scripts": {
@@ -31,12 +31,15 @@
     "faucet": "0.0.1",
     "nodemon": "^1.7.1",
     "react": "^0.14.0",
+    "sinon": "^1.17.1",
     "standard": "^5.1.0",
     "tape": "^4.2.1"
   },
   "dependencies": {
+    "lodash.assign": "^3.2.0",
     "lodash.camelcase": "^3.0.1",
     "lodash.clone": "^3.0.3",
+    "lodash.mapvalues": "^3.0.1",
     "query-selector": "^1.0.9",
     "style-attr": "^1.0.1"
   },

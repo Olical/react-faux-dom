@@ -2,12 +2,15 @@ var React = require('react')
 var clone = require('lodash.clone')
 var styleAttr = require('style-attr')
 var camelCase = require('lodash.camelcase')
+var assign = require('lodash.assign')
+var mapValues = require('lodash.mapvalues')
 var querySelectorAll = require('query-selector')
 
 function Element (nodeName, parentNode) {
   this.nodeName = nodeName
   this.parentNode = parentNode
   this.children = []
+  this.eventListeners = {}
   this.text = ''
   var props = this.props = {
     style: {
@@ -114,11 +117,21 @@ Element.prototype.eventToPropName = function (name) {
 }
 
 Element.prototype.addEventListener = function (name, fn) {
-  this.props[this.eventToPropName(name)] = fn
+  var prop = this.eventToPropName(name)
+  this.eventListeners[prop] = this.eventListeners[prop] || []
+  this.eventListeners[prop].push(fn)
 }
 
 Element.prototype.removeEventListener = function (name, fn) {
-  delete this.props[this.eventToPropName(name)]
+  var listeners = this.eventListeners[this.eventToPropName(name)]
+
+  if (listeners) {
+    var match = listeners.indexOf(fn)
+
+    if (match !== -1) {
+      listeners.splice(match, 1)
+    }
+  }
 }
 
 Element.prototype.appendChild = function (el) {
@@ -217,6 +230,21 @@ Element.prototype.toReact = function (index) {
   delete props.style.setProperty
   delete props.style.getProperty
   delete props.style.removeProperty
+
+  assign(props, mapValues(this.eventListeners, function (listeners) {
+    return function (syntheticEvent) {
+      var event
+
+      if (syntheticEvent) {
+        event = syntheticEvent.nativeEvent
+        event.syntheticEvent = syntheticEvent
+      }
+
+      mapValues(listeners, function (listener) {
+        listener(event)
+      })
+    }
+  }))
 
   return React.createElement(this.nodeName, props, this.text || this.children.map(function (el, i) {
     if (el instanceof Element) {
