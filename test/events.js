@@ -26,8 +26,8 @@ test('executing listeners', function (t) {
   t.plan(3)
   t.equal(typeof props.onClick, 'function')
   props.onClick()
-  t.ok(listeners.onClick[0].calledOnce)
-  t.ok(listeners.onClick[1].calledOnce)
+  t.ok(listeners.onClick[0]._.calledOnce)
+  t.ok(listeners.onClick[1]._.calledOnce)
 })
 
 // test('executed with native event')

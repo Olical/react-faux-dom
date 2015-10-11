@@ -52,7 +52,7 @@ test('some event support', function (t) {
     .node()
 
   t.plan(1)
-  t.equal(typeof el.props.onMouseOver, 'function')
+  t.equal(typeof el.eventListeners.onMouseOver[0], 'function')
 })
 
 test('next/previousSibling (used by order?)', function (t) {
