@@ -6,6 +6,16 @@ var assign = require('lodash.assign')
 var mapValues = require('lodash.mapvalues')
 var querySelectorAll = require('query-selector')
 
+function styleCamelCase (name) {
+  var camel = camelCase(name)
+
+  if (name[0] === '-') {
+    return camel[0].toUpperCase() + camel.slice(1)
+  } else {
+    return camel
+  }
+}
+
 function Element (nodeName, parentNode) {
   this.nodeName = nodeName
   this.parentNode = parentNode
@@ -15,13 +25,13 @@ function Element (nodeName, parentNode) {
   var props = this.props = {
     style: {
       setProperty: function (name, value) {
-        props.style[camelCase(name)] = value
+        props.style[styleCamelCase(name)] = value
       },
       getProperty: function (name) {
-        return props.style[camelCase(name)]
+        return props.style[styleCamelCase(name)]
       },
       removeProperty: function (name) {
-        delete props.style[camelCase(name)]
+        delete props.style[styleCamelCase(name)]
       }
     }
   }
