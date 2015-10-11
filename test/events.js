@@ -3,9 +3,13 @@ var test = require('tape')
 var sinon = require('sinon')
 var mk = require('./utils/mk')
 
+var lastEvent
+
 function mkWithEvents () {
   var el = mk()
-  el.on('click', sinon.spy())
+  el.on('click', sinon.spy(function () {
+    lastEvent = d3.event
+  }))
   el.on('click', sinon.spy())
   return el
 }
@@ -41,10 +45,9 @@ test('executed with native event (which contains synthetic)', function (t) {
     }
   }
   props.onClick(syntheticEvent)
-  var event = d3.event
   t.plan(2)
-  t.ok(event.isNative)
-  t.ok(event.syntheticEvent.isSynthetic)
+  t.ok(lastEvent.isNative)
+  t.ok(lastEvent.syntheticEvent.isSynthetic)
 })
 
 test('removing listeners', function (t) {
