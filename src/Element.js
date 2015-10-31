@@ -88,7 +88,13 @@ Element.prototype.attributeNameMappings = {
 }
 
 Element.prototype.attributeToPropName = function (name) {
-  return this.attributeNameMappings[name] || camelCase(name)
+  if (name.match(/^data-/)) {
+    return name
+  } else if (name.match(/^aria-/)) {
+    return name
+  } else {
+    return this.attributeNameMappings[name] || camelCase(name)
+  }
 }
 
 Element.prototype.setAttribute = function (name, value) {
