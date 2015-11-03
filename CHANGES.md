@@ -1,3 +1,8 @@
+# 2.1.0
+
+ * Merge [#23](https://github.com/Olical/react-faux-dom/pull/23) - Support data and aria attributes
+ * Merge [#25](https://github.com/Olical/react-faux-dom/pull/25) which fixes [#19](https://github.com/Olical/react-faux-dom/issues/19) - On click not passing through D3 datum
+
 # 2.0.1
 
  * Fix [#10](https://github.com/Olical/react-faux-dom/issues/10) - Vendor prefixed styles are camel cased incorrectly
