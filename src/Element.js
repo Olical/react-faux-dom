@@ -235,7 +235,7 @@ Element.prototype.toReact = function (index) {
   var props = clone(this.props)
   props.style = clone(props.style)
 
-  var data = this.__data__
+  var originalElement = this
 
   function uniqueKey () {
     return 'faux-dom-' + index
@@ -259,7 +259,7 @@ Element.prototype.toReact = function (index) {
       }
 
       mapValues(listeners, function (listener) {
-        listener.call({ '__data__': data }, event)
+        listener.call(originalElement, event)
       })
     }
   }))
