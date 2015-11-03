@@ -55,3 +55,19 @@ test('removing listeners', function (t) {
   t.plan(1)
   t.equal(eventListeners.onClick.length, 0)
 })
+
+test('event listeners on children', function (t) {
+  var el = mk()
+  var datum = { property: 'value' }
+  var clickValue = 'initial'
+  var join = el.selectAll('.foo')
+    .data([datum])
+  join.enter().append('svg:rect').classed('foo', true)
+    .attr('id', 'foo')
+  join.on('click', function (d) {
+    clickValue = d
+  })
+  el.node().getElementById('foo').toReact().props.onClick()
+  t.plan(1)
+  t.equal(clickValue, datum)
+})
