@@ -37,8 +37,6 @@ paragraph.style = 'color:red'
 Obviously this little DOM like data structure can't actually be rendered, that's why you have to call `toReact` on it. This will return a regular React element for you to return from your render function or nestle alongside other React elements and components.
 
 ```javascript
-//...
-
 render () {
   return (
     <div>
@@ -46,8 +44,6 @@ render () {
     </div>
   )
 }
-
-//...
 ```
 
 [jsdom]:
