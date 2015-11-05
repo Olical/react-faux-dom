@@ -11,8 +11,8 @@ Why do this though? This allows us to take a stateful library that mutates DOM s
 You can create an element by instantiating `ReactFauxDOM.Element` like so.
 
 ```javascript
-var ReactFauxDOM = require('react-faux-dom')
-var someDiv = new ReactFauxDOM.Element('div')
+import ReactFauxDOM from 'react-faux-dom'
+const someDiv = new ReactFauxDOM.Element('div')
 ```
 
 ### Children
@@ -20,7 +20,7 @@ var someDiv = new ReactFauxDOM.Element('div')
 If you don't want to call things like `appendChild` then you can instantiate an element as a child of another by passing the parent as the second argument to the constructor.
 
 ```javascript
-var paragraph = new ReactFauxDOM.Element('p', someDiv)
+const paragraph = new ReactFauxDOM.Element('p', someDiv)
 ```
 
 ### Manipulating
@@ -46,5 +46,43 @@ render () {
 }
 ```
 
-[jsdom]:
-[d3]:
+## DOM support
+
+### `ReactFauxDOM` (document)
+
+ * `defaultView`
+ * `createElement`
+ * `compareDocumentPosition` - Always returns 8, for selector engines
+
+### `ReactFauxDOM.Window`
+
+ * `getComputedStyle` - Just uses `el.style.getProperty`
+
+### `ReactFauxDOM.Element`
+
+* `style.setProperty`
+* `style.getProperty`
+* `style.removeProperty`
+* `style.\* = '...'`
+* `style = '...'`
+* `setAttribute`
+* `getAttribute`
+* `getAttributeNode`
+* `removeAttribute`
+* `addEventListener`
+* `removeEventListener`
+* `appendChild`
+* `insertBefore`
+* `removeChild`
+* `querySelector`
+* `querySelectorAll`
+* `getElementsByTagName`
+* `getElementById`
+* `nextSibling`
+* `previousSibling`
+* `innerHTML`
+* `textContent`
+
+
+[jsdom]: https://github.com/tmpvar/jsdom
+[d3]: http://d3js.org/
