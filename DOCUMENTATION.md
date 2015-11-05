@@ -4,6 +4,8 @@ This library allows you to instantiate a fairly lightweight object that behaves 
 
 Why do this though? This allows us to take a stateful library that mutates DOM structures, such as D3, and make it entirely stateless. From there we can render our charts and other such DOM trees into React components without dropping out of the component life cycle. This is even more important with the introduction of stateless components (which are just simple functions!), you no longer want to be messing around with life cycle hooks, we should just be returning React DOM structures.
 
+The best documentation will always be the source and tests, but I will try to give you an overview of usage and the high level API below.
+
 ## Usage
 
 ### Creating elements
@@ -63,7 +65,7 @@ render () {
 * `style.setProperty`
 * `style.getProperty`
 * `style.removeProperty`
-* `style.\* = '...'`
+* `style.* = '...'`
 * `style = '...'`
 * `setAttribute`
 * `getAttribute`
