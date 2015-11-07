@@ -40,6 +40,7 @@
     "lodash.camelcase": "^3.0.1",
     "lodash.clone": "^3.0.3",
     "lodash.mapvalues": "^3.0.1",
+    "lodash.some": "^3.2.3",
     "query-selector": "^1.0.9",
     "style-attr": "^1.0.1"
   },

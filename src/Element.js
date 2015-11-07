@@ -3,6 +3,7 @@ var clone = require('lodash.clone')
 var styleAttr = require('style-attr')
 var camelCase = require('lodash.camelcase')
 var assign = require('lodash.assign')
+var some = require('lodash.some')
 var mapValues = require('lodash.mapvalues')
 var querySelectorAll = require('query-selector')
 
@@ -83,14 +84,21 @@ Element.prototype.eventNameMappings = {
   'wheel': 'onWheel'
 }
 
+Element.prototype.skipNameTransformationExpressions = [
+  /^data-/,
+  /^aria-/
+]
+
 Element.prototype.attributeNameMappings = {
   'class': 'className'
 }
 
 Element.prototype.attributeToPropName = function (name) {
-  if (name.match(/^data-/)) {
-    return name
-  } else if (name.match(/^aria-/)) {
+  var skipTransformMatches = this.skipNameTransformationExpressions.map(function (expr) {
+    return expr.test(name)
+  })
+
+  if (some(skipTransformMatches)) {
     return name
   } else {
     return this.attributeNameMappings[name] || camelCase(name)
