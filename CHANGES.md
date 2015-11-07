@@ -1,3 +1,8 @@
+# 2.1.1
+
+ * Merge [#26](https://github.com/Olical/react-faux-dom/pull/26) - Documentation
+ * Merge [#27](https://github.com/Olical/react-faux-dom/pull/27) - Cache some RegExps and make a section of code more DRY
+
 # 2.1.0
 
  * Merge [#23](https://github.com/Olical/react-faux-dom/pull/23) - Support data and aria attributes
