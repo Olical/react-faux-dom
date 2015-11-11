@@ -25,10 +25,27 @@ You can think of this as a bare bones [jsdom][] that's built to bridge the gap b
 
 I'm trying to keep it light so as not to slow down your render function. I want efficient, declarative and stateless code, but I don't want to throw away previous tools to get there.
 
+## Limitations
+
+It's great for...
+
+ * Static D3 components or other such libraries (things like Backbone should work too!)
+ * D3 components with simple state and event interaction, like tooltips on charts
+ * D3 components such as progress bars that can be animated using [react-motion][], for example
+
+It's not so great for...
+
+ * Physics based D3 components or anything using a lot of DOM mutation and state
+ * Linked to the previous one, brushing and filtering of selections using the built in stateful D3 tools
+ * Essentially: Anything with a lot of DOM mutation from timers, events or internal state will be hard to use
+
+If you keep it stateless and React-ish then you'll be fine. Use tools like D3 to fluently build your charts / DOM, don't use it as an animation / physics / DOM mutation library, that doesn't work within React. See the state example linked below for a simple way to handle state, events and D3.
+
 ## Usage
 
  * Full [documentation][] with current DOM API coverage
- * A full example use case can be found [in my lab][lab-post] ([source][lab-source])
+ * [An example static chart ][lab-chart] ([source][lab-chart-source])
+ * [A simple example using state and events][lab-state] ([source][lab-state-source])
  * [d3-react-sparkline][], a small component I built at [Qubit][]
 
 ## Development
@@ -64,8 +81,11 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [d3]: http://d3js.org/
 [react]: http://facebook.github.io/react/
 [jsdom]: https://github.com/tmpvar/jsdom
-[lab-post]: http://lab.oli.me.uk/d3-to-react-again/
-[lab-source]: https://github.com/Olical/lab/blob/gh-pages/js/d3-to-react-again/main.js
+[lab-chart]: http://lab.oli.me.uk/d3-to-react-again/
+[lab-chart-source]: https://github.com/Olical/lab/blob/gh-pages/js/d3-to-react-again/main.js
+[lab-state]: http://lab.oli.me.uk/react-faux-dom-state/
+[lab-state-source]: https://github.com/Olical/lab/blob/gh-pages/js/react-faux-dom-state/main.js
 [d3-react-sparkline]: https://github.com/QubitProducts/d3-react-sparkline
 [qubit]: http://www.qubit.com/
 [documentation]: ./DOCUMENTATION.md
+[react-motion]: https://github.com/chenglou/react-motion
