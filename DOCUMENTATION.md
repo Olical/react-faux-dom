@@ -1,5 +1,3 @@
-# Documentation
-
 This library allows you to instantiate a fairly lightweight object that behaves (sort of) like a regular DOM element from your browser. It does not support the whole DOM API, you'll probably want [jsdom][] for that. Instead, it supports a subset which was initially just enough to satisfy [D3][] but this can be expanded easily as desired. Things like jQuery and Backbone can also be used, it just may require some up front tweaking.
 
 Why do this though? This allows us to take a stateful library that mutates DOM structures, such as D3, and make it entirely stateless. From there we can render our charts and other such DOM trees into React components without dropping out of the component life cycle. This is even more important with the introduction of stateless components (which are just simple functions!), you no longer want to be messing around with life cycle hooks, we should just be returning React DOM structures.
@@ -23,7 +21,11 @@ If you don't want to call things like `appendChild` then you can instantiate an 
 
 ```javascript
 const paragraph = new ReactFauxDOM.Element('p', someDiv)
+paragraph.appendChild(someFauxDOMElement)
+paragraph.appendChild(someReactElement)
 ```
+
+As you can see, you can embed React components into the faux DOM seamlessly. Mutating those children obviously won't work, but it allows you to optimise your rendering significantly.
 
 ### Manipulating
 
