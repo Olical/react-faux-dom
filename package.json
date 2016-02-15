@@ -39,6 +39,7 @@
     "lodash.assign": "^3.2.0",
     "lodash.camelcase": "^3.0.1",
     "lodash.clone": "^3.0.3",
+    "lodash.filter": "^3.1.1",
     "lodash.mapvalues": "^3.0.1",
     "lodash.some": "^3.2.3",
     "query-selector": "^1.0.9",

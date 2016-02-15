@@ -4,6 +4,7 @@ var styleAttr = require('style-attr')
 var camelCase = require('lodash.camelcase')
 var assign = require('lodash.assign')
 var some = require('lodash.some')
+var filter = require('lodash.filter')
 var mapValues = require('lodash.mapvalues')
 var querySelectorAll = require('query-selector')
 
@@ -20,7 +21,7 @@ function styleCamelCase (name) {
 function Element (nodeName, parentNode) {
   this.nodeName = nodeName
   this.parentNode = parentNode
-  this.children = []
+  this.childNodes = []
   this.eventListeners = {}
   this.text = ''
   var props = this.props = {
@@ -160,26 +161,26 @@ Element.prototype.removeEventListener = function (name, fn) {
 
 Element.prototype.appendChild = function (el) {
   el.parentNode = this
-  this.children.push(el)
+  this.childNodes.push(el)
   return el
 }
 
 Element.prototype.insertBefore = function (el, before) {
-  var index = this.children.indexOf(before)
+  var index = this.childNodes.indexOf(before)
   el.parentNode = this
 
   if (index !== -1) {
-    this.children.splice(index, 0, el)
+    this.childNodes.splice(index, 0, el)
   } else {
-    this.children.push(el)
+    this.childNodes.push(el)
   }
 
   return el
 }
 
 Element.prototype.removeChild = function (child) {
-  var target = this.children.indexOf(child)
-  this.children.splice(target, 1)
+  var target = this.childNodes.indexOf(child)
+  this.childNodes.splice(target, 1)
 }
 
 Element.prototype.querySelector = function () {
@@ -310,6 +311,21 @@ Object.defineProperties(Element.prototype, {
     },
     set: function (text) {
       this.text = text
+    }
+  },
+  children: {
+    get: function () {
+      // So far nodes created by this library are all of nodeType 1 (elements),
+      // but this could change in the future.
+      return filter(this.childNodes, function (el) {
+        if (!el.nodeType) {
+          // It's a React element, we always add it
+          return true
+        }
+
+        // It's a HTML node. We want to filter to have only nodes with type 1
+        return el.nodeType === 1
+      })
     }
   }
 })
