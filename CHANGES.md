@@ -1,3 +1,8 @@
+# 2.2.0
+
+ * Merge [#35](https://github.com/Olical/react-faux-dom/pull/35) - Define `childNodes` in `Element`
+ * Some small README improvements
+
 # 2.1.1
 
  * Merge [#26](https://github.com/Olical/react-faux-dom/pull/26) - Documentation
