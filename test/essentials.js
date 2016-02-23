@@ -1,6 +1,6 @@
 var test = require('tape')
 var ReactFauxDOM = require('..')
-var Element = require('../src/Element')
+var Element = require('../lib/Element')
 
 test('has a create method', function (t) {
   t.plan(1)
