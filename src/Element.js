@@ -11,6 +11,12 @@ var querySelectorAll = require('query-selector')
 function styleCamelCase (name) {
   var camel = camelCase(name)
 
+  // Detect if the style property is already camelCased
+  // To not convert Webkit*, Moz* and O* to lowercase
+  if (camel.slice(1) === name.slice(1)) {
+    return name
+  }
+
   if (name[0] === '-') {
     return camel[0].toUpperCase() + camel.slice(1)
   } else {
