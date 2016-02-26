@@ -18,7 +18,8 @@ function styleCamelCase (name) {
   }
 
   if (name[0] === '-') {
-    return camel[0].toUpperCase() + camel.slice(1)
+    return camel.indexOf('ms') === 0 ? camel
+      : camel[0].toUpperCase() + camel.slice(1)
   } else {
     return camel
   }
