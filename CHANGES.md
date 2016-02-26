@@ -1,3 +1,7 @@
+# 2.3.0
+
+ * Merge [#38](https://github.com/Olical/react-faux-dom/pull/38#issuecomment-189248845) - Fix vendor prefixes for already camelCased style names
+
 # 2.2.0
 
  * Merge [#35](https://github.com/Olical/react-faux-dom/pull/35) - Define `childNodes` in `Element`
