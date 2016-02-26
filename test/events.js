@@ -1,7 +1,7 @@
 var d3 = require('d3')
 var test = require('tape')
 var sinon = require('sinon')
-var mk = require('./utils/mk')
+var mk = require('./test-utils/mk')
 
 var lastEvent
 

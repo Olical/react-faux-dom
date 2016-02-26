@@ -36,7 +36,6 @@
     "tape": "^4.4.0"
   },
   "dependencies": {
-    "lodash.camelcase": "^3.0.1",
     "query-selector": "^1.0.9",
     "style-attr": "^1.0.1"
   },

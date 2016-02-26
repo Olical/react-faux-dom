@@ -1,5 +1,5 @@
 var test = require('tape')
-var mk = require('./utils/mk')
+var mk = require('./test-utils/mk')
 
 test('simple style string sets the property', function (t) {
   var el = mk().node()
