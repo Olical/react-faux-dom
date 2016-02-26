@@ -53,3 +53,18 @@ test('vendor prefixed styles are correctly camel-cased', function (t) {
   t.plan(1)
   t.equal(el.style.WebkitTransition, 'opacity 100ms ease')
 })
+
+test('pascal-cased, vendor prefixed styles are not camel-cased', function (t) {
+  var el = mk().node()
+  el.setAttribute('style', 'WebkitTransition: opacity 100ms ease')
+  t.plan(1)
+  t.equal(el.style.WebkitTransition, 'opacity 100ms ease')
+})
+
+test('-ms- and ms* vendor prefixed styles are supported', function (t) {
+  t.plan(2)
+  var el = mk().node()
+  el.setAttribute('style', 'msTransform: opacity 100ms ease; -ms-animation: 1s ease popIn')
+  t.equal(el.style.msTransform, 'opacity 100ms ease')
+  t.equal(el.style.msAnimation, '1s ease popIn')
+})
