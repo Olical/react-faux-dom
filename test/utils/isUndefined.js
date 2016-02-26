@@ -1,12 +1,12 @@
 var test = require('tape')
-var isString = require('../../lib/utils/isString')
+var isUndefined = require('../../lib/utils/isUndefined')
 
-test('not a string', function (t) {
+test('not a undefined', function (t) {
   t.plan(1)
-  t.notOk(isString(123))
+  t.notOk(isUndefined(123))
 })
 
-test('is a string', function (t) {
+test('is a undefined', function (t) {
   t.plan(1)
-  t.ok(isString('123'))
+  t.ok(isUndefined(undefined))
 })
