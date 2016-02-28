@@ -1,6 +1,10 @@
+# 2.4.0
+
+ * Merge [#37](https://github.com/Olical/react-faux-dom/pull/37) - Replace lodash dependencies with in house functions
+
 # 2.3.0
 
- * Merge [#38](https://github.com/Olical/react-faux-dom/pull/38#issuecomment-189248845) - Fix vendor prefixes for already camelCased style names
+ * Merge [#38](https://github.com/Olical/react-faux-dom/pull/38) - Fix vendor prefixes for already camelCased style names
 
 # 2.2.0
 
