@@ -1,6 +1,8 @@
 # 2.4.0
 
  * Merge [#37](https://github.com/Olical/react-faux-dom/pull/37) - Replace lodash dependencies with in house functions
+ * Throw when `querySelector(All)` does not receive an argument
+ * Return null when `querySelector` does not find a match
 
 # 2.3.0
 
