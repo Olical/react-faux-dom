@@ -49,3 +49,19 @@ test('selecting missing elements with all', function (t) {
   t.ok(res instanceof Array)
   t.strictEqual(res.length, 0)
 })
+
+test('selecting one with no argument throws', function (t) {
+  t.plan(1)
+  var node = getListNode()
+  t.throws(function () {
+    node.querySelector()
+  }, /Not enough arguments/)
+})
+
+test('selecting many with no argument throws', function (t) {
+  t.plan(1)
+  var node = getListNode()
+  t.throws(function () {
+    node.querySelectorAll()
+  }, /Not enough arguments/)
+})
