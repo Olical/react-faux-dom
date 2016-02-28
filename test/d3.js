@@ -1,5 +1,5 @@
 var test = require('tape')
-var mk = require('./utils/mk')
+var mk = require('./test-utils/mk')
 
 test('modify properties', function (t) {
   var el = mk()
