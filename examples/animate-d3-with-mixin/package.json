@@ -14,5 +14,5 @@
     "build": "browserify -t reactify index.js -o bundle.js"
   },
   "author": "David Waller",
-  "license": "ISC"
+  "license": "Unlicense"
 }
