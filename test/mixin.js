@@ -65,7 +65,7 @@ test('stopAnimatingFauxDOM works as expected', function (t) {
   elem.toReact = function () {
     return ++framecount
   }
-  comp.connectFauxDOM(elem,'a_div')
+  comp.connectFauxDOM(elem, 'a_div')
   comp.animateFauxDOM(500)
   setTimeout(function () {
     comp.stopAnimatingFauxDOM()
