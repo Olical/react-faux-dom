@@ -32,3 +32,27 @@ test('drawing and connecting works as expected', function (t) {
     t.deepEqual(drew, comp.setState.args[2][0])
   }, 100)
 })
+
+test('animateFauxDOM works as expected', function (t) {
+  t.plan(3)
+  var comp = Comp()
+  var elem = Elem('div')
+  var framecount = 0
+  elem.toReact = function () {
+    return ++framecount
+  }
+  comp.connectFauxDOM(elem, 'a_div')
+  comp.connectFauxDOM('span', 'a_span')
+  comp.animateFauxDOM(200) // 200 ms should equal around 200/16 = 12.5 frames
+  setTimeout(function () {
+    t.ok(framecount > 8 && framecount < 15)
+    t.deepEqual(comp.setState.args[5][0], {
+      a_div: 6,
+      a_span: Elem('span').toReact()
+    })
+    t.deepEqual(comp.setState.args[framecount - 1][0], {
+      a_div: framecount,
+      a_span: Elem('span').toReact()
+    })
+  }, 500)
+})
