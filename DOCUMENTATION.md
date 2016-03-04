@@ -89,3 +89,17 @@ render () {
 
 [jsdom]: https://github.com/tmpvar/jsdom
 [d3]: http://d3js.org/
+
+## React component mixin
+
+You also have access to a mixin which makes it easy to render faux nodes, and to animate them while they're being mutated by a DOM library like for example D3.
+
+The mixin gives you the following methods:
+
+* **`connectFauxDOM(node,name)`**: This will store `node` in `this.connectedFauxDOM[name]`, and make an asynchronous call to `drawFauxDOM`. The node can be a faux element or a string, in which case a faux element is instantiated. The node is returned for convenience. A component can have multiple connected nodes.
+* **`drawFauxDOM()`**: This will update component state (causing a render) with virtual DOM (through `node.toReact()`) for all previously `connect`ed faux nodes. Each node's representation will be on `this.state[name]`, where `name` is the one used in the `connect` call.
+* **`animateFauxDOM(duration)`**: This will make a call to `drawFauxDOM` every 16 milliseconds until the duration has expired.
+* **`stopAnimatingFauxDOM()`**: Cancels eventual ongoing animation
+* **`isAnimatingFauxDOM()`**: Returns true or false depending on whether an animation is ongoing.
+
+The mixin will also take care of the necessary setup and teardown. To see the mixin in action, check out the `animate-d3-with-mixin` mini-app in the `examples` folder.
