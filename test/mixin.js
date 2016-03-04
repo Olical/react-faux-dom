@@ -56,3 +56,21 @@ test('animateFauxDOM works as expected', function (t) {
     })
   }, 500)
 })
+
+test('stopAnimatingFauxDOM works as expected', function (t) {
+  t.plan(1)
+  var comp = Comp()
+  var elem = Elem('div')
+  var framecount = 0
+  elem.toReact = function () {
+    return ++framecount
+  }
+  comp.connectFauxDOM(elem,'a_div')
+  comp.animateFauxDOM(500)
+  setTimeout(function () {
+    comp.stopAnimatingFauxDOM()
+  }, 200)
+  setTimeout(function () {
+    t.ok(framecount > 8 && framecount < 15) // should not have run for 500 ms
+  }, 500)
+})
