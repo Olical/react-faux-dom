@@ -19,7 +19,7 @@ return el.toReact()
 // Yields: <div style='color: red;' className='box'></div>
 ```
 
-There's also a **mixin** with animation support:
+There are also **mixins** available for convenience, giving you a clean API and animation support:
 
 ```javascript
 // inside componentWillMount
