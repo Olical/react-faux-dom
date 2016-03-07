@@ -1,8 +1,9 @@
-var mixin = require('../../lib/mixin')
+var core = require('../../lib/mixins/core')
+var anim = require('../../lib/mixins/anim')
 var sinon = require('sinon')
 
 function Component (noinit) {
-  var comp = Object.assign({}, mixin)
+  var comp = Object.assign({}, core, anim)
   for (var m in comp) {
     comp[m] = comp[m].bind(comp)
   }

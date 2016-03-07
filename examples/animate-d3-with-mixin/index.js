@@ -4,7 +4,7 @@ var Faux = require('../../lib/ReactFauxDOM')
 var d3 = require('d3')
 
 var Chart = React.createClass({
-  mixins: [Faux.mixin],
+  mixins: [Faux.mixins.core, Faux.mixins.anim],
   getInitialState: function () {
     return { look: 'stacked' }
   },
