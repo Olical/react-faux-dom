@@ -32,7 +32,7 @@ return {this.state.chart};
 ```
 
 
-React-faux-DOM supports a wide range of DOM operations and will fool most libraries but it isn't exhaustive (the full DOM API is ludicrously large). It supports enough to work with D3 but will require you to fork and add to the project if you encounter something that's missing.
+ReactFauxDOM supports a wide range of DOM operations and will fool most libraries but it isn't exhaustive (the full DOM API is ludicrously large). It supports enough to work with D3 but will require you to fork and add to the project if you encounter something that's missing.
 
 You can think of this as a bare bones [jsdom][] that's built to bridge the gap between the declarative React and the imperative JavaScript world. We just need to expand it as we go along since jsdom is a huge project that solves different problems.
 
@@ -44,7 +44,7 @@ I'm trying to keep it light so as not to slow down your render function. I want 
 
  * Full [documentation][] with current DOM API coverage
  * [An example static chart ][lab-chart] ([source][lab-chart-source])
- * [An example animated chart using the mixin](./examples/animate-d3-with-mixin)
+ * [An example animated chart using the mixin][mixin-example] 
  * [A simple example using state and events][lab-state] ([source][lab-state-source])
  * [d3-react-sparkline][], a small component I built at [Qubit][]
 
@@ -89,3 +89,4 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [qubit]: http://www.qubit.com/
 [documentation]: ./DOCUMENTATION.md
 [react-motion]: https://github.com/chenglou/react-motion
+[mixin-example]: ./examples/animate-d3-with-mixin
