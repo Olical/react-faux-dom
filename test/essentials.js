@@ -1,5 +1,5 @@
 var test = require('tape')
-var React = require('React')
+var React = require('react')
 var ReactFauxDOM = require('..')(React)
 
 test('has a create method', function (t) {

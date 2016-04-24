@@ -1,4 +1,4 @@
-var React = require('React')
+var React = require('react')
 var ReactFauxDOM = require('../..')(React)
 var d3 = require('d3')
 
