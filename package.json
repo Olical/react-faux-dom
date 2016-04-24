@@ -30,12 +30,12 @@
     "d3": "^3.5.16",
     "faucet": "0.0.1",
     "nodemon": "^1.9.1",
-    "react": "^0.14.7",
     "sinon": "^1.17.3",
     "standard": "^6.0.7",
     "tape": "^4.4.0"
   },
   "dependencies": {
+    "react": "^0.14.7",
     "query-selector": "^1.0.9",
     "style-attr": "^1.0.1"
   },
