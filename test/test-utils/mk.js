@@ -1,4 +1,5 @@
-var ReactFauxDOM = require('../..')
+var React = require('react')
+var ReactFauxDOM = require('../..')(React)
 var d3 = require('d3')
 
 function mk () {

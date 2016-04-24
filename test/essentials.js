@@ -1,6 +1,6 @@
 var test = require('tape')
-var ReactFauxDOM = require('..')
-var Element = require('../lib/Element')
+var React = require('react')
+var ReactFauxDOM = require('..')(React)
 
 test('has a create method', function (t) {
   t.plan(1)
@@ -38,7 +38,7 @@ test('children and childNodes behave properly', function (t) {
   t.equal(parentEl.childNodes.length, 3)
   t.equal(parentEl.children.length, 2)
 
-  t.ok(parentEl.childNodes[0] instanceof Element)
+  t.ok(parentEl.childNodes[0] instanceof ReactFauxDOM.Element)
   t.equal(parentEl.childNodes[1].type, el.nodeName)
   t.equal(parentEl.childNodes[2].nodeType, 3)
 })
