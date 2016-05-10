@@ -1,3 +1,7 @@
+# 2.5.0
+
+ * Merge [#41](https://github.com/Olical/react-faux-dom/pull/41) - Adding mixin with animation support (thanks @krawaller!)
+
 # 2.4.0
 
  * Merge [#37](https://github.com/Olical/react-faux-dom/pull/37) - Replace lodash dependencies with in house functions
