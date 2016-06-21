@@ -41,7 +41,8 @@ I'm trying to keep it light so as not to slow down your render function. I want 
 
 You can install the package `react-faux-dom` from npm as you usually would. Then use webpack or browserify (etc) to bundle the source into your build. If you need a pre-built UMD version you can use [npmcdn][].
 
-For example, https://npmcdn.com/react-faux-dom@2.5.0/dist/ReactFauxDOM.min.js fetches `v2.5.0` and https://npmcdn.com/react-faux-dom/dist/ReactFauxDOM.min.js fetches the latest version.
+ * You can fetch a version - https://npmcdn.com/react-faux-dom@2.5.0/dist/ReactFauxDOM.min.js
+ * Or a specific version - https://npmcdn.com/react-faux-dom/dist/ReactFauxDOM.min.js
 
 ## Usage
 
