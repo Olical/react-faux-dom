@@ -2,8 +2,11 @@
   "name": "react-faux-dom",
   "version": "2.5.0",
   "description": "DOM like data structure to be mutated by D3 et al, then rendered to React elements",
-  "main": "lib/ReactFauxDOM.js",
+  "main": "dist/ReactFauxDOM.min.js",
   "scripts": {
+    "build:develop": "cross-env NODE_ENV=development webpack lib/ReactFauxDOM.js dist/ReactFauxDOM.js",
+    "build:production": "cross-env NODE_ENV=production webpack lib/ReactFauxDOM.js dist/ReactFauxDOM.min.js",
+    "build:publish": "npm run build:develop && npm run build:production",
     "test": "standard && tape './test/**/*.js' | faucet"
   },
   "repository": {
@@ -27,13 +30,18 @@
   },
   "homepage": "https://github.com/Olical/react-faux-dom#readme",
   "devDependencies": {
+    "babel-cli": "6.10.1",
+    "babel-core": "6.9.1",
+    "babel-loader": "6.2.4",
+    "cross-env": "1.0.8",
     "d3": "^3.5.16",
     "faucet": "0.0.1",
     "nodemon": "^1.9.1",
     "react": "^0.14.7",
     "sinon": "^1.17.3",
     "standard": "^6.0.7",
-    "tape": "^4.4.0"
+    "tape": "^4.4.0",
+    "webpack": "1.13.1"
   },
   "dependencies": {
     "query-selector": "^1.0.9",
