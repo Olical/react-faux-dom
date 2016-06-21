@@ -47,6 +47,7 @@ I'm trying to keep it light so as not to slow down your render function. I want 
  * [An example animated chart using the mixin][mixin-example] 
  * [A simple example using state and events][lab-state] ([source][lab-state-source])
  * [d3-react-sparkline][], a small component I built at [Qubit][]
+ * [component-kit][], "UI-Kit for Rapidly Creating Dashboards"
 
 ## Development
 
@@ -90,3 +91,4 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [documentation]: ./DOCUMENTATION.md
 [react-motion]: https://github.com/chenglou/react-motion
 [mixin-example]: ./examples/animate-d3-with-mixin
+[component-kit]: https://github.com/kennetpostigo/component-kit
