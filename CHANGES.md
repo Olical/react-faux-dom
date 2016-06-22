@@ -1,5 +1,11 @@
 # react-faux-dom changes
 
+## v2.6.2
+
+ * REALLY fix `package.json`, just realised I don't need to publish to test this :(
+
+Sorry about v2.6.{0,1,2}, my bad.
+
 ## v2.6.1
 
  * Fix `package.json` files array by removing it. Trying to get `dist` in npm.
