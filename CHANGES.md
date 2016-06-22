@@ -1,5 +1,9 @@
 # react-faux-dom changes
 
+## v2.6.1
+
+ * Fix `package.json` files array by removing it. Trying to get `dist` in npm.
+
 ## v2.6.0
 
  * Merge [#53](https://github.com/Olical/react-faux-dom/pull/53) (just my approach to [#48](https://github.com/Olical/react-faux-dom/pull/48)) - Provide a UMD build in a CDN.
