@@ -4,8 +4,12 @@
   "description": "DOM like data structure to be mutated by D3 et al, then rendered to React elements",
   "main": "lib/ReactFauxDOM.js",
   "scripts": {
-    "test": "standard && tape './test/**/*.js' | faucet"
+    "test": "standard && tape './test/**/*.js' | faucet",
+    "prepublish": "npm test && make build"
   },
+  "files": [
+    "./dist/ReactFauxDOM.min.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Olical/react-faux-dom.git"
@@ -27,12 +31,13 @@
   },
   "homepage": "https://github.com/Olical/react-faux-dom#readme",
   "devDependencies": {
+    "bastion": "^1.8.0",
     "d3": "^3.5.16",
     "faucet": "0.0.1",
     "nodemon": "^1.9.1",
-    "react": "^0.14.7",
+    "react": "^15.1.0",
     "sinon": "^1.17.3",
-    "standard": "^6.0.7",
+    "standard": "^7.1.2",
     "tape": "^4.4.0"
   },
   "dependencies": {

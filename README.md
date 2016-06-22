@@ -31,14 +31,18 @@ this.animateFauxDOM(3500); // duration + margin
 return {this.state.chart};
 ```
 
-
 ReactFauxDOM supports a wide range of DOM operations and will fool most libraries but it isn't exhaustive (the full DOM API is ludicrously large). It supports enough to work with D3 but will require you to fork and add to the project if you encounter something that's missing.
 
 You can think of this as a bare bones [jsdom][] that's built to bridge the gap between the declarative React and the imperative JavaScript world. We just need to expand it as we go along since jsdom is a huge project that solves different problems.
 
 I'm trying to keep it light so as not to slow down your render function. I want efficient, declarative and stateless code, but I don't want to throw away previous tools to get there.
 
+## Installation
 
+You can install the package `react-faux-dom` from npm as you usually would. Then use webpack or browserify (etc) to bundle the source into your build. If you need a pre-built UMD version you can use [npmcdn][].
+
+ * You can fetch a version - https://npmcdn.com/react-faux-dom@2.5.0/dist/ReactFauxDOM.min.js
+ * Or a specific version - https://npmcdn.com/react-faux-dom/dist/ReactFauxDOM.min.js
 
 ## Usage
 
@@ -92,3 +96,4 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [react-motion]: https://github.com/chenglou/react-motion
 [mixin-example]: ./examples/animate-d3-with-mixin
 [component-kit]: https://github.com/kennetpostigo/component-kit
+[npmcdn]: https://npmcdn.com/

@@ -153,4 +153,4 @@ var Chart = React.createClass({
   }
 })
 
-ReactDOM.render(<Chart/>, document.getElementById('container'))
+ReactDOM.render(<Chart />, document.getElementById('container'))
