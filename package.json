@@ -7,9 +7,6 @@
     "test": "standard && tape './test/**/*.js' | faucet",
     "prepublish": "npm test && make build"
   },
-  "files": [
-    "./dist/ReactFauxDOM.min.js"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Olical/react-faux-dom.git"
