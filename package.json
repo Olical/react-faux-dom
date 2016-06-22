@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/Olical/react-faux-dom#readme",
   "devDependencies": {
-    "babel-eslint": "^6.0.5",
     "bastion": "^1.7.0",
     "d3": "^3.5.16",
     "faucet": "0.0.1",
@@ -39,7 +38,6 @@
     "react": "^15.1.0",
     "sinon": "^1.17.3",
     "standard": "^7.1.2",
-    "standard-loader": "^4.0.0",
     "tape": "^4.4.0"
   },
   "dependencies": {
