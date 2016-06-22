@@ -1,3 +1,7 @@
+# 2.6.0
+
+ * Merge [#53](https://github.com/Olical/react-faux-dom/pull/53) (just my approach to [#48](https://github.com/Olical/react-faux-dom/pull/48)) - Provide a UMD build in a CDN.
+
 # 2.5.0
 
  * Merge [#41](https://github.com/Olical/react-faux-dom/pull/41) - Adding mixin with animation support (thanks @krawaller!)
