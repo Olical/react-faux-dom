@@ -26,9 +26,8 @@ test('drawing and connecting works as expected', function (t) {
     a_div: Elem('div').toReact(),
     a_span: Elem('span').toReact()
   }
-  ;['a_div', 'a_span'].forEach(function (key) {
-    compareReactElements(t, drew[key], drewExpected[key])
-  })
+  compareReactElements(t, drew.a_div, drewExpected.a_div)
+  compareReactElements(t, drew.a_span, drewExpected.a_span)
   setTimeout(function () {
     // should have made one additional draw call per connection
     t.equal(comp.setState.callCount, 3)
