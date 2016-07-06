@@ -1,5 +1,9 @@
 # react-faux-dom changes
 
+## v2.7.0
+
+ * Merge [#52](https://github.com/Olical/react-faux-dom/pull/52#issuecomment-230895972) - Add support for `getBoundingClientRect`, thanks to @alexyuly!
+
 ## v2.6.2
 
  * REALLY fix `package.json`, just realised I don't need to publish to test this :(
