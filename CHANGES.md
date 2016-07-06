@@ -2,7 +2,7 @@
 
 ## v2.7.0
 
- * Merge [#52](https://github.com/Olical/react-faux-dom/pull/52#issuecomment-230895972) - Add support for `getBoundingClientRect`, thanks to @alexyuly!
+ * Merge [#52](https://github.com/Olical/react-faux-dom/pull/52#issuecomment-230895972) - Add support for `getBoundingClientRect`, thanks to [@alexyuly](https://github.com/alexyuly)!
 
 ## v2.6.2
 
@@ -20,7 +20,7 @@ Sorry about v2.6.{0,1,2}, my bad.
 
 ## v2.5.0
 
- * Merge [#41](https://github.com/Olical/react-faux-dom/pull/41) - Adding mixin with animation support (thanks @krawaller!)
+ * Merge [#41](https://github.com/Olical/react-faux-dom/pull/41) - Adding mixin with animation support (thanks [@krawaller](https://github.com/krawaller)!)
 
 ## v2.4.0
 
