@@ -1,6 +1,7 @@
 var test = require('tape')
 var ReactFauxDOM = require('..')
 var Comp = require('./test-utils/component')
+var compareReactElements = require('./test-utils/compareReactElements')
 var sinon = require('sinon')
 
 var Elem = ReactFauxDOM.createElement
@@ -14,17 +15,19 @@ test('isAnimatingFauxDOM works as expected', function (t) {
 })
 
 test('drawing and connecting works as expected', function (t) {
-  t.plan(5)
+  t.plan(16)
   var comp = Comp()
   comp.connectFauxDOM('div', 'a_div')
   comp.connectFauxDOM(Elem('span'), 'a_span')
   comp.drawFauxDOM()
   t.equal(comp.setState.callCount, 1)
   var drew = comp.setState.args[0][0]
-  t.deepEqual(drew, {
+  var drewExpected = {
     a_div: Elem('div').toReact(),
     a_span: Elem('span').toReact()
-  })
+  }
+  compareReactElements(t, drew.a_div, drewExpected.a_div)
+  compareReactElements(t, drew.a_span, drewExpected.a_span)
   setTimeout(function () {
     // should have made one additional draw call per connection
     t.equal(comp.setState.callCount, 3)
@@ -34,7 +37,7 @@ test('drawing and connecting works as expected', function (t) {
 })
 
 test('animateFauxDOM works as expected', function (t) {
-  t.plan(4)
+  t.plan(16)
   var comp = Comp()
   var elem = Elem('div')
   var framecount = 0
@@ -52,14 +55,20 @@ test('animateFauxDOM works as expected', function (t) {
   // 200 ms should equal around 200/16 = 12.5 frames
   setTimeout(function () {
     t.ok(framecount > 8 && framecount < 15)
-    t.deepEqual(comp.setState.args[5][0], {
+    var actual1 = comp.setState.args[5][0]
+    var expected1 = {
       a_div: 6,
       a_span: Elem('span').toReact()
-    })
-    t.deepEqual(comp.setState.args[framecount - 1][0], {
+    }
+    t.equal(actual1.a_div, expected1.a_div)
+    compareReactElements(t, actual1.a_span, expected1.a_span)
+    var actual2 = comp.setState.args[framecount - 1][0]
+    var expected2 = {
       a_div: framecount,
       a_span: Elem('span').toReact()
-    })
+    }
+    t.equal(actual2.a_div, expected2.a_div)
+    compareReactElements(t, actual2.a_span, expected2.a_span)
   }, 500)
 })
 

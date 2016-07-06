@@ -86,6 +86,7 @@ render () {
 * `previousSibling`
 * `innerHTML`
 * `textContent`
+* `getBoundingClientRect`
 
 [jsdom]: https://github.com/tmpvar/jsdom
 [d3]: http://d3js.org/
