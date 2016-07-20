@@ -1,8 +1,12 @@
 # react-faux-dom changes
 
+## v2.7.1
+
+ * Merge [#59](https://github.com/Olical/react-faux-dom/pull/59) - Updates D3 to v4 (a `devDependency`) and makes sure the tests work fine.
+
 ## v2.7.0
 
- * Merge [#52](https://github.com/Olical/react-faux-dom/pull/52#issuecomment-230895972) - Add support for `getBoundingClientRect`, thanks to [@alexyuly](https://github.com/alexyuly)!
+ * Merge [#52](https://github.com/Olical/react-faux-dom/pull/52) - Add support for `getBoundingClientRect`, thanks to [@alexyuly](https://github.com/alexyuly)!
 
 ## v2.6.2
 
