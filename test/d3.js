@@ -77,7 +77,7 @@ test('removing a child', function (t) {
 
 test('styles', function (t) {
   var el = mk()
-    .style({
+    .styles({
       'stroke-width': '2px',
       opacity: 0.5
     })

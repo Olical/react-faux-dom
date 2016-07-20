@@ -6,17 +6,25 @@ var mk = require('./test-utils/mk')
 var lastEvent
 
 function mkWithEvents () {
-  var el = mk()
-  el.on('click', sinon.spy(function () {
+  var clickEvent = sinon.spy(function () {
     lastEvent = d3.event
-  }))
-  el.node().addEventListener('mousedown', sinon.spy())
-  return el
+  })
+  var mousedownEvent = sinon.spy()
+
+  var el = mk()
+  el.on('click', clickEvent)
+  el.node().addEventListener('mousedown', mousedownEvent)
+
+  return {
+    el: el,
+    clickEvent: clickEvent,
+    mousedownEvent: mousedownEvent
+  }
 }
 
 test('adding listeners', function (t) {
-  var el = mkWithEvents()
-  var eventListeners = el.node().eventListeners
+  var node = mkWithEvents().el.node()
+  var eventListeners = node.eventListeners
   t.plan(3)
   t.equal(eventListeners.onClick.length, 1)
   t.ok(eventListeners.onClick instanceof Array)
@@ -24,18 +32,20 @@ test('adding listeners', function (t) {
 })
 
 test('executing listeners', function (t) {
-  var el = mkWithEvents().node()
-  var listeners = el.eventListeners
-  var props = el.toReact().props
+  var out = mkWithEvents()
+  var clickEvent = out.clickEvent
+  var node = out.el.node()
+
+  var props = node.toReact().props
   t.plan(2)
   t.equal(typeof props.onClick, 'function')
   props.onClick()
-  t.ok(listeners.onClick[0]._.calledOnce)
+  t.ok(clickEvent.calledOnce)
 })
 
 test('executed with native event (which contains synthetic)', function (t) {
-  var el = mkWithEvents().node()
-  var props = el.toReact().props
+  var node = mkWithEvents().el.node()
+  var props = node.toReact().props
   var syntheticEvent = {
     isSynthetic: true,
     nativeEvent: {
@@ -49,9 +59,9 @@ test('executed with native event (which contains synthetic)', function (t) {
 })
 
 test('removing listeners', function (t) {
-  var el = mkWithEvents()
-  var eventListeners = el.node().eventListeners
-  el.node().removeEventListener('click', eventListeners.onClick[0])
+  var node = mkWithEvents().el.node()
+  var eventListeners = node.eventListeners
+  node.removeEventListener('click', eventListeners.onClick[0])
   t.plan(1)
   t.equal(eventListeners.onClick.length, 0)
 })
@@ -60,13 +70,12 @@ test('event listeners on children', function (t) {
   var el = mk()
   var datum = { property: 'value' }
   var clickValue = 'initial'
-  var join = el.selectAll('.foo')
-    .data([datum])
-  join.enter().append('svg:rect').classed('foo', true)
-    .attr('id', 'foo')
-  join.on('click', function (d) {
-    clickValue = d
-  })
+  var join = el.selectAll('.foo').data([datum])
+  join.enter()
+      .append('svg:rect')
+      .classed('foo', true)
+      .attr('id', 'foo')
+      .on('click', function (d) { clickValue = d })
   el.node().getElementById('foo').toReact().props.onClick()
   t.plan(1)
   t.equal(clickValue, datum)
