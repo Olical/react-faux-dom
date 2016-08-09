@@ -39,11 +39,56 @@ I'm trying to keep it light so as not to slow down your render function. I want 
 
 ## Installation
 
-You can install the package `react-faux-dom` from npm as you usually would. Then use webpack or browserify (etc) to bundle the source into your build. If you need a pre-built UMD version you can use [npmcdn][].
-
-You can find the latest version of the UMD version at https://npmcdn.com/react-faux-dom/dist/ReactFauxDOM.min.js
+You can install the package `react-faux-dom` from npm as you usually would. Then use webpack or browserify (etc) to bundle the source into your build. 
+If you need a pre-built UMD version you can use [npmcdn][]. You can find the latest version of the UMD version at https://npmcdn.com/react-faux-dom/dist/ReactFauxDOM.min.js
 
 ## Usage
+
+Basic usage with [D3][] and ES6 modules:
+
+```
+  import React from 'react';
+  import * as d3 from 'd3';
+  import Faux from 'react-faux-dom';
+
+  const MyReactClass = React.createClass({
+
+    mixins: [Faux.mixins.core, Faux.mixins.anim],
+
+    getInitialState() {
+      return {
+        chart: 'loading...'
+      }
+    },
+
+    componentDidMount() {
+      const faux = this.connectFauxDOM('div.renderedD3', 'chart')
+      const component = this;
+
+      d3.select(faux)
+        .append('div')
+        .html('Hello World!');
+
+      this.animateFauxDOM(800)
+    },
+
+    render() {
+      return (
+        <div>
+          <h2>Here is some fancy data:</h2>
+          <div className="renderedD3">
+            {this.state.chart}
+          </div>
+        </div>
+      )
+    }
+
+  });
+
+  export default MyReactClass;
+```
+
+### More usage info:
 
  * Full [documentation][] with current DOM API coverage
  * [An example static chart ][lab-chart] ([source][lab-chart-source])
