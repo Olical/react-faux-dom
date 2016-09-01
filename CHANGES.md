@@ -1,5 +1,12 @@
 # react-faux-dom changes
 
+## v3.0.0
+
+ * Merge [#69](https://github.com/Olical/react-faux-dom/pull/69) - Return an empty string from style getters by default. From issue [#68](https://github.com/Olical/react-faux-dom/issues/68).
+ * Merge [#71](https://github.com/Olical/react-faux-dom/pull/71) - Changes npmcdn URLs to unpkg. Not sure why they're doing this but oh well.
+
+Breaking change because the default return type of the style functions have changed from `undefined` to `string`.
+
 ## v2.7.1
 
  * Merge [#59](https://github.com/Olical/react-faux-dom/pull/59) - Updates D3 to v4 (a `devDependency`) and makes sure the tests work fine.
