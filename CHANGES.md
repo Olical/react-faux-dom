@@ -4,8 +4,12 @@
 
  * Merge [#69](https://github.com/Olical/react-faux-dom/pull/69) - Return an empty string from style getters by default. From issue [#68](https://github.com/Olical/react-faux-dom/issues/68).
  * Merge [#71](https://github.com/Olical/react-faux-dom/pull/71) - Changes npmcdn URLs to unpkg. Not sure why they're doing this but oh well.
+ *
 
-Breaking change because the default return type of the style functions have changed from `undefined` to `string`.
+Breaking change because of the following:
+
+ * The default return type of the style functions have changed from `undefined` to `string`.
+ * The unpkg build (previously npmcdn) exports to the global `ReactFauxDOM` instead of `react-faux-dom`.
 
 ## v2.7.1
 

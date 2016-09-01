@@ -1,5 +1,5 @@
 export function webpack (config) {
-  config.output.library = 'react-faux-dom'
+  config.output.library = 'ReactFauxDOM'
   config.output.libraryTarget = 'umd'
   config.externals = [
     {
