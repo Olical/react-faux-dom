@@ -77,10 +77,8 @@ test('removing a child', function (t) {
 
 test('styles', function (t) {
   var el = mk()
-    .styles({
-      'stroke-width': '2px',
-      opacity: 0.5
-    })
+    .style('stroke-width', '2px')
+    .style('opacity', 0.5)
 
   t.plan(4)
   var styles = el.node().props.style
