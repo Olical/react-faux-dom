@@ -39,9 +39,9 @@ I'm trying to keep it light so as not to slow down your render function. I want 
 
 ## Installation
 
-You can install the package `react-faux-dom` from npm as you usually would. Then use webpack or browserify (etc) to bundle the source into your build. If you need a pre-built UMD version you can use [npmcdn][].
+You can install the package `react-faux-dom` from npm as you usually would. Then use webpack or browserify (etc) to bundle the source into your build. If you need a pre-built UMD version you can use [unpkg][].
 
-You can find the latest version of the UMD version at https://npmcdn.com/react-faux-dom/dist/ReactFauxDOM.min.js
+You can find the latest version of the UMD version at https://unpkg.com/react-faux-dom/dist/ReactFauxDOM.min.js
 
 ## Usage
 
@@ -95,4 +95,4 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [react-motion]: https://github.com/chenglou/react-motion
 [mixin-example]: ./examples/animate-d3-with-mixin
 [component-kit]: https://github.com/kennetpostigo/component-kit
-[npmcdn]: https://npmcdn.com/
+[unpkg]: https://unpkg.com/
