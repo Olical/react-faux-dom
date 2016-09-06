@@ -5,29 +5,33 @@
 DOM like data structure to be mutated by [D3][] et al, then rendered to [React][] elements.
 
 ```javascript
-// Create your element.
-var el = ReactFauxDOM.createElement('div')
+class SomeChart extends React.Component {
+  render () {
+    // Create your element.
+    var el = ReactFauxDOM.createElement('div')
 
-// Change stuff using actual DOM functions.
-// Even perform CSS selections.
-el.style.setProperty('color', 'red')
-el.setAttribute('class', 'box')
+    // Change stuff using actual DOM functions.
+    // Even perform CSS selections!
+    el.style.setProperty('color', 'red')
+    el.setAttribute('class', 'box')
 
-// Render it to React elements.
-return el.toReact()
+    // Render it to React elements.
+    return el.toReact()
+  }
+}
 
-// Yields: <div style='color: red;' className='box'></div>
+// Yields: <div style='color: red;' class='box'></div>
 ```
 
-There are also **mixins** available for convenience, giving you a clean API and animation support:
+There are also mixins available for convenience, giving you a clean API and animation support:
 
 ```javascript
-// inside componentWillMount
-var faux = this.connectFauxDOM('div','chart');
-d3.doingAnAdvancedAnimationFor3secs(faux);
-this.animateFauxDOM(3500); // duration + margin
+// Inside componentWillMount.
+var faux = this.connectFauxDOM('div', 'chart')
+d3.performSomeAnimation(faux)
+this.animateFauxDOM(3500) // duration + margin
 
-// inside render
+// Inside render.
 return {this.state.chart};
 ```
 
@@ -43,7 +47,53 @@ You can install the package `react-faux-dom` from npm as you usually would. Then
 
 You can find the latest version of the UMD version at https://unpkg.com/react-faux-dom/dist/ReactFauxDOM.min.js
 
-## Usage
+## Example
+
+Complex usage with [D3][], ES6 modules and animations.
+
+```javascript
+import React from 'react'
+import * as d3 from 'd3'
+import Faux from 'react-faux-dom'
+
+const MyReactClass = React.createClass({
+  mixins: [
+    Faux.mixins.core,
+    Faux.mixins.anim
+  ],
+
+  getInitialState () {
+    return {
+      chart: 'loading...'
+    }
+  },
+
+  componentDidMount () {
+    const faux = this.connectFauxDOM('div.renderedD3', 'chart')
+
+    d3.select(faux)
+      .append('div')
+      .html('Hello World!')
+
+    this.animateFauxDOM(800)
+  },
+
+  render () {
+    return (
+      <div>
+        <h2>Here is some fancy data:</h2>
+        <div className='renderedD3'>
+          {this.state.chart}
+        </div>
+      </div>
+    )
+  }
+})
+
+export default MyReactClass
+```
+
+### More usage info:
 
  * Full [documentation][] with current DOM API coverage
  * [An example static chart ][lab-chart] ([source][lab-chart-source])
