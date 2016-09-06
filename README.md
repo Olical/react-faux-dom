@@ -49,6 +49,7 @@ You can find the latest version of the UMD version at https://unpkg.com/react-fa
  * [An example static chart ][lab-chart] ([source][lab-chart-source])
  * [An example animated chart using the mixin][mixin-example] 
  * [A simple example using state and events][lab-state] ([source][lab-state-source])
+ * [A d3 sankey diagram builder][sankey-app] ([source][sankey-app-source])
  * [d3-react-sparkline][], a small component I built at [Qubit][]
  * [component-kit][], "UI-Kit for Rapidly Creating Dashboards"
 
@@ -93,6 +94,8 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [qubit]: http://www.qubit.com/
 [documentation]: ./DOCUMENTATION.md
 [react-motion]: https://github.com/chenglou/react-motion
+[sankey-app]: http://nick.balestra.ch/sankey/
+[sankey-app-source]: https://github.com/nickbalestra/sankey
 [mixin-example]: ./examples/animate-d3-with-mixin
 [component-kit]: https://github.com/kennetpostigo/component-kit
 [unpkg]: https://unpkg.com/
