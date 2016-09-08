@@ -26,17 +26,23 @@ test('nested text', function (t) {
 
 test('auto default keys', function (t) {
   var el = mk()
+  // 0
   el.append('p')
-  el.append('p').attr('key', 'testing')
+  // 1
+  var sub = el.append('p').attr('key', 'testing')
+  // 1.0
+  sub.append('p')
+  // 2
   el.append('p').attr('foo', 'bar')
 
   var tree = el.node().toReact()
 
-  t.plan(5)
+  t.plan(6)
   t.equal(tree.key, 'faux-dom-0')
-  t.equal(tree.props.children[0].key, 'faux-dom-0')
+  t.equal(tree.props.children[0].key, 'faux-dom-0-0')
   t.equal(tree.props.children[1].key, 'testing')
-  t.equal(tree.props.children[2].key, 'faux-dom-2')
+  t.equal(tree.props.children[1].props.children[0].key, 'testing-0')
+  t.equal(tree.props.children[2].key, 'faux-dom-0-2')
   t.equal(tree.props.children[2].props.foo, 'bar')
 })
 
