@@ -1,10 +1,14 @@
 # react-faux-dom changes
 
+## v4.0.0
+
+ * More neat README examples!
+ * Remove default React key allocation and document it. See [#67](https://github.com/Olical/react-faux-dom/issues/67), [#73](https://github.com/Olical/react-faux-dom/pull/73) and [#74](https://github.com/Olical/react-faux-dom/pull/74).
+
 ## v3.0.0
 
  * Merge [#69](https://github.com/Olical/react-faux-dom/pull/69) - Return an empty string from style getters by default. From issue [#68](https://github.com/Olical/react-faux-dom/issues/68).
  * Merge [#71](https://github.com/Olical/react-faux-dom/pull/71) - Changes npmcdn URLs to unpkg. Not sure why they're doing this but oh well.
- *
 
 Breaking change because of the following:
 
