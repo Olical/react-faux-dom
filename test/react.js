@@ -30,7 +30,6 @@ test('pre-built React elements are rendered into the tree', function (t) {
   var el = mk().node()
   var sub = mk()
     .attr('foo', 'bar')
-    .attr('key', 'bar')
     .node()
     .toReact()
 
@@ -38,14 +37,13 @@ test('pre-built React elements are rendered into the tree', function (t) {
   var tree = el.toReact()
 
   t.plan(1)
-  t.equal(tree.props.children[0].props.foo, 'bar')
+  t.equal(tree.props.children.props.foo, 'bar')
 })
 
 test('React elements customize data-* attributes are rendered into the tree', function (t) {
   var el = mk().node()
   var sub = mk()
     .attr('data-foo', 'bar')
-    .attr('key', 'bar')
     .node()
     .toReact()
 
@@ -53,14 +51,13 @@ test('React elements customize data-* attributes are rendered into the tree', fu
   var tree = el.toReact()
 
   t.plan(1)
-  t.equal(tree.props.children[0].props['data-foo'], 'bar')
+  t.equal(tree.props.children.props['data-foo'], 'bar')
 })
 
 test('React elements aria-* attributes are rendered into the tree', function (t) {
   var el = mk().node()
   var sub = mk()
     .attr('aria-hidden', 'true')
-    .attr('key', 'bar')
     .node()
     .toReact()
 
@@ -68,7 +65,7 @@ test('React elements aria-* attributes are rendered into the tree', function (t)
   var tree = el.toReact()
 
   t.plan(1)
-  t.equal(tree.props.children[0].props['aria-hidden'], 'true')
+  t.equal(tree.props.children.props['aria-hidden'], 'true')
 })
 
 test('toReact does not mutate the state', function (t) {
