@@ -29,7 +29,7 @@ As you can see, you can embed React components into the faux DOM seamlessly. Mut
 
 Just like normal React, if you have multiple children you should assign a unique `key` to them so React knows what's what as it moves and changes. You can do that with `.setAttribute('key', 'foo')` or if you're using D3 `.attr('key', 'foo')`. React will log an error if you forget to do this anywhere.
 
-> Previously, `v3.0.0` and below, ReactFauxDOM would automatically generate keys to suppress most of these errors and make it easier on the user, but this can lead to subtle performance problems that may be hard to find. This can be significant issues if you have lot of elements, say, points on a large graph.
+> Previously, `v3.0.0` and below, ReactFauxDOM would automatically generate keys to suppress most of these errors and make it easier on the user, but this can lead to subtle performance problems that may be hard to find. This can lead to significant issues if you have lot of elements, say, points on a large graph.
 
 ### Manipulating
 
