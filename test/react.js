@@ -11,9 +11,11 @@ test('simple node', function (t) {
 
 test('nested text', function (t) {
   var el = mk()
-  el.append('p').text('one')
-  el.append('p').text('two')
-  el.append('p').text('three')
+  var keys = ['one', 'two', 'three']
+
+  keys.forEach(function (n) {
+    el.append('p').attr('key', n).text(n)
+  })
 
   var tree = el.node().toReact()
 
@@ -22,22 +24,6 @@ test('nested text', function (t) {
   t.equal(tree.props.children.length, 3)
   t.equal(tree.props.children[1].type, 'p')
   t.equal(tree.props.children[1].props.children, 'two')
-})
-
-test('auto default keys', function (t) {
-  var el = mk()
-  el.append('p')
-  el.append('p').attr('key', 'testing')
-  el.append('p').attr('foo', 'bar')
-
-  var tree = el.node().toReact()
-
-  t.plan(5)
-  t.equal(tree.key, 'faux-dom-0')
-  t.equal(tree.props.children[0].key, 'faux-dom-0')
-  t.equal(tree.props.children[1].key, 'testing')
-  t.equal(tree.props.children[2].key, 'faux-dom-2')
-  t.equal(tree.props.children[2].props.foo, 'bar')
 })
 
 test('pre-built React elements are rendered into the tree', function (t) {
@@ -51,7 +37,7 @@ test('pre-built React elements are rendered into the tree', function (t) {
   var tree = el.toReact()
 
   t.plan(1)
-  t.equal(tree.props.children[0].props.foo, 'bar')
+  t.equal(tree.props.children.props.foo, 'bar')
 })
 
 test('React elements customize data-* attributes are rendered into the tree', function (t) {
@@ -65,7 +51,7 @@ test('React elements customize data-* attributes are rendered into the tree', fu
   var tree = el.toReact()
 
   t.plan(1)
-  t.equal(tree.props.children[0].props['data-foo'], 'bar')
+  t.equal(tree.props.children.props['data-foo'], 'bar')
 })
 
 test('React elements aria-* attributes are rendered into the tree', function (t) {
@@ -79,7 +65,7 @@ test('React elements aria-* attributes are rendered into the tree', function (t)
   var tree = el.toReact()
 
   t.plan(1)
-  t.equal(tree.props.children[0].props['aria-hidden'], 'true')
+  t.equal(tree.props.children.props['aria-hidden'], 'true')
 })
 
 test('toReact does not mutate the state', function (t) {
@@ -107,4 +93,23 @@ test('React elements have a ref attribute', function (t) {
   tree.ref(fakeComponent)
   t.equal(el.component, fakeComponent)
   t.equal(el.getBoundingClientRect(), fakeClientRect)
+})
+
+test('multiple children require keys', function (t) {
+  t.plan(4)
+  var el = mk().node()
+  var children = ['foo', 'bar', 'baz'].map(function (n) {
+    return mk()
+      .text(n)
+      .attr('key', n)
+      .node()
+  })
+
+  children.forEach(el.appendChild.bind(el))
+
+  t.ok(el.toReact())
+
+  t.equal(el.childNodes[0].getAttribute('key'), 'foo')
+  t.equal(el.childNodes[1].getAttribute('key'), 'bar')
+  t.equal(el.childNodes[2].getAttribute('key'), 'baz')
 })
