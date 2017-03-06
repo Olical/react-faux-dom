@@ -1,10 +1,13 @@
 # react-faux-dom changes
 
+## v3.0.1
+
+ * Fix builds, as reported by [#81](https://github.com/Olical/react-faux-dom/issues/81) - It used to use a tool I built, bastion, but npm@3+ broke that. Uses webpack directly now.
+
 ## v3.0.0
 
  * Merge [#69](https://github.com/Olical/react-faux-dom/pull/69) - Return an empty string from style getters by default. From issue [#68](https://github.com/Olical/react-faux-dom/issues/68).
  * Merge [#71](https://github.com/Olical/react-faux-dom/pull/71) - Changes npmcdn URLs to unpkg. Not sure why they're doing this but oh well.
- *
 
 Breaking change because of the following:
 
