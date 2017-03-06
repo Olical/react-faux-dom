@@ -3,6 +3,8 @@
 ## v3.0.1
 
  * Fix builds, as reported by [#81](https://github.com/Olical/react-faux-dom/issues/81) - It used to use a tool I built, bastion, but npm@3+ broke that. Uses webpack directly now.
+ * Add a bind where there could be potential issues. Fixes [#75](https://github.com/Olical/react-faux-dom/issues/75).
+ * Merge [#65](https://github.com/Olical/react-faux-dom/pull/65) - Documentation improvements.
 
 ## v3.0.0
 
