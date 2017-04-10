@@ -5,8 +5,8 @@ var Chart = require('./Chart')
 var App = React.createClass({
   getInitialState: function () {
     return {
-      dataArray0: [30,35,45,55,70],
-      dataArray1: [50,55,45,35,20,25,25,40],
+      dataArray0: [30, 35, 45, 55, 70],
+      dataArray1: [50, 55, 45, 35, 20, 25, 25, 40],
       dataIndex: 0
     }
   },
