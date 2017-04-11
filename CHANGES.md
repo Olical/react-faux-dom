@@ -1,5 +1,9 @@
 # react-faux-dom changes
 
+## v3.0.2
+
+ * Revert [#75](https://github.com/Olical/react-faux-dom/issues/75). It caused issues in some cases.
+
 ## v3.0.1
 
  * Fix builds, as reported by [#81](https://github.com/Olical/react-faux-dom/issues/81) - It used to use a tool I built, bastion, but npm@3+ broke that. Uses webpack directly now.
