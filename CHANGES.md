@@ -1,8 +1,9 @@
 # react-faux-dom changes
 
-## v3.0.2
+## v3.1.0
 
  * Revert [#75](https://github.com/Olical/react-faux-dom/issues/75). It caused issues in some cases.
+ * Merge [#85](https://github.com/Olical/react-faux-dom/pull/85) - Reuse the DOM in updates when using the mixin.
 
 ## v3.0.1
 
