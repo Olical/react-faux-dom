@@ -97,7 +97,7 @@ You also have access to **mixins** which makes it easy to render faux nodes, and
 
 The **core** mixin supplies the following methods:
 
-* **`connectFauxDOM(node,name)`**: This will store `node` in `this.connectedFauxDOM[name]`, and make an asynchronous call to `drawFauxDOM`. The node can be a faux element or a string, in which case a faux element is instantiated. The node is returned for convenience. A component can have multiple connected nodes.
+* **`connectFauxDOM(node, name)`**: This will store `node` in `this.connectedFauxDOM[name]`, and make an asynchronous call to `drawFauxDOM`. The node can be a faux element or a string, in which case a faux element is instantiated. The node is returned for convenience. A component can have multiple connected nodes. If the node already exists, it will be reused by default. If you need to force a new node, use the form `connectFauxDOM(node, name, discardNode)` setting the optional third argument `discardNode` to `true`.
 * **`drawFauxDOM()`**: This will update component state (causing a render) with virtual DOM (through `node.toReact()`) for all previously `connect`ed faux nodes. Each node's representation will be on `this.state[name]`, where `name` is the one used in the `connect` call.
 
 If you also add the **anim** mixin then you get:
