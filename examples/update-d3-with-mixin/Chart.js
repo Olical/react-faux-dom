@@ -1,9 +1,8 @@
 var React = require('react')
-var Faux = require('../../lib/ReactFauxDOM')
+var withFauxDOM = require('../../lib/ReactFauxDOM').withFauxDOM
 var d3 = require('d3')
 
 var Chart = React.createClass({
-  mixins: [Faux.mixins.core, Faux.mixins.anim],
   propsTypes: {
     title: React.PropTypes.string.isRequired,
     data: React.PropTypes.arrayOf(React.PropTypes.number).isRequired
@@ -113,4 +112,6 @@ var Chart = React.createClass({
   }
 })
 
-module.exports = Chart
+const FauxChart = withFauxDOM(Chart)
+
+module.exports = FauxChart
