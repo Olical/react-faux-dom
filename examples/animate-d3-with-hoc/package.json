@@ -1,7 +1,7 @@
 {
-  "name": "react-faux-dom-example-update",
+  "name": "react-faux-dom-example-hoc",
   "version": "0.0.1",
-  "description": "An example of how to use the React-Faux-DOM mixin to update and animate D3",
+  "description": "An example of how to use the React-Faux-DOM HOC to animate D3",
   "main": "index.js",
   "devDependencies": {
     "browserify": "^13.0.0",
@@ -13,6 +13,6 @@
   "scripts": {
     "build": "browserify -t reactify index.js -o bundle.js"
   },
-  "author": "Thibaut Tiberghien",
+  "author": "David Waller",
   "license": "Unlicense"
 }

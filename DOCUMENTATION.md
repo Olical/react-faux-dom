@@ -91,19 +91,18 @@ render () {
 [jsdom]: https://github.com/tmpvar/jsdom
 [d3]: http://d3js.org/
 
-## React component mixins
+## React Higher-Order Component (HOC)
 
-You also have access to **mixins** which makes it easy to render faux nodes, and to animate them while they're being mutated by a DOM library like for example D3.
+You also have access to an **higher-order component** which makes it easy to render faux nodes, and to animate them while they're being mutated by a DOM library like for example D3.
 
-The **core** mixin supplies the following methods:
+To use it, simply import it with `import {withFauxDOM} from 'react-faux-dom'` or require it with `var withFauxDOM = require('../../lib/ReactFauxDOM').withFauxDOM`, and then apply it to your component with `withFauxDOM(MyComponent)`.
+
+The `withFauxDOM()` HOC injects the following methods in your component:
 
 * **`connectFauxDOM(node, name)`**: This will store `node` in `this.connectedFauxDOM[name]`, and make an asynchronous call to `drawFauxDOM`. The node can be a faux element or a string, in which case a faux element is instantiated. The node is returned for convenience. A component can have multiple connected nodes. If the node already exists, it will be reused by default. If you need to force a new node, use the form `connectFauxDOM(node, name, discardNode)` setting the optional third argument `discardNode` to `true`.
 * **`drawFauxDOM()`**: This will update component state (causing a render) with virtual DOM (through `node.toReact()`) for all previously `connect`ed faux nodes. Each node's representation will be on `this.state[name]`, where `name` is the one used in the `connect` call.
-
-If you also add the **anim** mixin then you get:
-
 * **`animateFauxDOM(duration)`**: This will make a call to `drawFauxDOM` every 16 milliseconds until the duration has expired.
 * **`stopAnimatingFauxDOM()`**: Cancels eventual ongoing animation
 * **`isAnimatingFauxDOM()`**: Returns true or false depending on whether an animation is ongoing.
 
-The mixins will also take care of the necessary setup and teardown. To see them in action, check out the `animate-d3-with-mixin` mini-app in the `examples` folder.
+The HOC will also take care of the necessary setup and teardown. To see it in action, check out the `animate-d3-with-hoc` and `update-d3-with-hoc` mini-apps in the `examples` folder.
