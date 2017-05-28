@@ -102,7 +102,7 @@ export default MyReactClass
  * [A d3 sankey diagram builder][sankey-app] ([source][sankey-app-source])
  * [d3-react-sparkline][], a small component I built at [Qubit][]
  * [component-kit][], "UI-Kit for Rapidly Creating Dashboards"
- * [React + D3.js: Balancing Performance & Developer Experience][tibotiber-post] by @tibotiber 
+ * [React + D3.js: Balancing Performance & Developer Experience][tibotiber-post] by [tibotiber][]
 
 ## Development
 
@@ -151,3 +151,4 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [component-kit]: https://github.com/kennetpostigo/component-kit
 [unpkg]: https://unpkg.com/
 [tibotiber-post]: https://medium.com/@tibotiber/react-d3-js-balancing-performance-developer-experience-4da35f912484
+[tibotiber]: https://github.com/tibotiber
