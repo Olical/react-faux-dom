@@ -1,5 +1,13 @@
 # react-faux-dom changes
 
+## v4.0.0
+
+ * Merge [#91](https://github.com/Olical/react-faux-dom/pull/91) - Replace mixins with higher order components.
+ * Merge [#88](https://github.com/Olical/react-faux-dom/pull/88) - Add CDNJS version to README.md.
+ * Merge [#89](https://github.com/Olical/react-faux-dom/pull/89) - Add option to discard the existing node in connectFauxDom.
+ * Merge [#95](https://github.com/Olical/react-faux-dom/pull/95) - Alias style.getPropertyValue to style.getProperty, D3 requires it now.
+ * Commit [1c3a9ee](https://github.com/Olical/react-faux-dom/commit/1c3a9ee872ccddca49efd8a24b4f419c24da199b) - Only set the parentNode on faux DOM nodes, not React nodes.
+
 ## v3.1.0
 
  * Revert [#75](https://github.com/Olical/react-faux-dom/issues/75). It caused issues in some cases.
