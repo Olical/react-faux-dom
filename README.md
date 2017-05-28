@@ -96,12 +96,13 @@ export default MyReactClass
 ### More usage info:
 
  * Full [documentation][] with current DOM API coverage
- * [An example static chart ][lab-chart] ([source][lab-chart-source])
+ * [An example static chart][lab-chart] ([source][lab-chart-source])
  * [An example animated chart using the mixin][mixin-example] 
  * [A simple example using state and events][lab-state] ([source][lab-state-source])
  * [A d3 sankey diagram builder][sankey-app] ([source][sankey-app-source])
  * [d3-react-sparkline][], a small component I built at [Qubit][]
  * [component-kit][], "UI-Kit for Rapidly Creating Dashboards"
+ * [React + D3.js: Balancing Performance & Developer Experience][tibotiber-post] by @tibotiber 
 
 ## Development
 
@@ -149,3 +150,4 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [mixin-example]: ./examples/animate-d3-with-mixin
 [component-kit]: https://github.com/kennetpostigo/component-kit
 [unpkg]: https://unpkg.com/
+[tibotiber-post]: https://medium.com/@tibotiber/react-d3-js-balancing-performance-developer-experience-4da35f912484
