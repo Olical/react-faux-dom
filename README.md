@@ -23,7 +23,7 @@ class SomeChart extends React.Component {
 // Yields: <div style='color: red;' class='box'></div>
 ```
 
-There are also mixins available for convenience, giving you a clean API and animation support:
+There is also an higher-order component available for convenience, giving you a clean API and animation support:
 
 ```javascript
 // Inside componentWillMount.
@@ -54,29 +54,22 @@ Complex usage with [D3][], ES6 modules and animations.
 ```javascript
 import React from 'react'
 import * as d3 from 'd3'
-import Faux from 'react-faux-dom'
+import {withFauxDOM} from 'react-faux-dom'
 
-const MyReactClass = React.createClass({
-  mixins: [
-    Faux.mixins.core,
-    Faux.mixins.anim
-  ],
-
-  getInitialState () {
-    return {
-      chart: 'loading...'
-    }
-  },
+class MyReactComponent extends React.Component {
+  state = {
+    chart: 'loading...'
+  }
 
   componentDidMount () {
-    const faux = this.connectFauxDOM('div.renderedD3', 'chart')
+    const faux = this.connectFauxDOM('div', 'chart')
 
     d3.select(faux)
       .append('div')
       .html('Hello World!')
 
     this.animateFauxDOM(800)
-  },
+  }
 
   render () {
     return (
@@ -90,19 +83,26 @@ const MyReactClass = React.createClass({
   }
 })
 
-export default MyReactClass
+export default withFauxDOM(MyReactComponent)
 ```
 
 ### More usage info:
 
  * Full [documentation][] with current DOM API coverage
- * [An example static chart][lab-chart] ([source][lab-chart-source])
- * [An example animated chart using the mixin][mixin-example] 
+ * [An example static chart ][lab-chart] ([source][lab-chart-source])
+ * [An example animated chart using the HOC][hoc-animate-example] 
+ * [An example chart with D3 updates using the HOC][hoc-update-example] 
  * [A simple example using state and events][lab-state] ([source][lab-state-source])
  * [A d3 sankey diagram builder][sankey-app] ([source][sankey-app-source])
  * [d3-react-sparkline][], a small component I built at [Qubit][]
  * [component-kit][], "UI-Kit for Rapidly Creating Dashboards"
- * [React + D3.js: Balancing Performance & Developer Experience][tibotiber-post] by [tibotiber][]
+ * [A demo dashboard with multiple charts][rd3-demo] ([source][rd3-source])
+
+### Related articles:
+
+ * [D3 within React the right way][Olical-post]
+ * [React + D3.js: Balancing Performance & Developer Experience][tibotiber-post]
+ * [A starting point on using D3 with React][AdilBaaj-post]
 
 ## Development
 
@@ -147,8 +147,12 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [react-motion]: https://github.com/chenglou/react-motion
 [sankey-app]: http://nick.balestra.ch/sankey/
 [sankey-app-source]: https://github.com/nickbalestra/sankey
-[mixin-example]: ./examples/animate-d3-with-mixin
+[hoc-animate-example]: ./examples/animate-d3-with-hoc
+[hoc-update-example]: ./examples/update-d3-with-hoc
 [component-kit]: https://github.com/kennetpostigo/component-kit
 [unpkg]: https://unpkg.com/
+[Olical-post]: http://oli.me.uk/2015/09/09/d3-within-react-the-right-way/
 [tibotiber-post]: https://medium.com/@tibotiber/react-d3-js-balancing-performance-developer-experience-4da35f912484
-[tibotiber]: https://github.com/tibotiber
+[rd3-demo]: https://rd3.now.sh
+[rd3-source]: https://github.com/tibotiber/rd3
+[AdilBaaj-post]: https://blog.sicara.com/a-starting-point-on-using-d3-with-react-869fdf3dfaf

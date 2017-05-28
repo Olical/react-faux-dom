@@ -1,10 +1,9 @@
 var React = require('react')
 var ReactDOM = require('react-dom')
-var Faux = require('../../lib/ReactFauxDOM')
+var withFauxDOM = require('../../lib/ReactFauxDOM').withFauxDOM
 var d3 = require('d3')
 
 var Chart = React.createClass({
-  mixins: [Faux.mixins.core, Faux.mixins.anim],
   getInitialState: function () {
     return { look: 'stacked' }
   },
@@ -153,4 +152,6 @@ var Chart = React.createClass({
   }
 })
 
-ReactDOM.render(<Chart />, document.getElementById('container'))
+var FauxChart = withFauxDOM(Chart)
+
+ReactDOM.render(<FauxChart />, document.getElementById('container'))
