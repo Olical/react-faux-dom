@@ -68,3 +68,11 @@ test('-ms- and ms* vendor prefixed styles are supported', function (t) {
   t.equal(el.style.msTransform, 'opacity 100ms ease')
   t.equal(el.style.msAnimation, '1s ease popIn')
 })
+
+test('getPropertyValue is the same as getProperty', function (t) {
+  t.plan(2)
+  var el = mk().node()
+  el.setAttribute('style', 'width: 10px;')
+  t.equal(el.style.getProperty('width'), '10px')
+  t.equal(el.style.getPropertyValue('width'), '10px')
+})
