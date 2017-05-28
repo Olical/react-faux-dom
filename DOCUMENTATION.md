@@ -66,6 +66,7 @@ render () {
 
 * `style.setProperty`
 * `style.getProperty`
+* `style.getPropertyValue`
 * `style.removeProperty`
 * `style.* = '...'`
 * `style = '...'`
