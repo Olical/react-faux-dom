@@ -52,6 +52,7 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "create-react-class": "^15.5.3",
     "query-selector": "^1.0.9",
     "style-attr": "^1.0.1"
   },
