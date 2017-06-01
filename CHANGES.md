@@ -1,5 +1,11 @@
 # react-faux-dom changes
 
+## v4.0.2
+
+Same as v4.0.1 but under the normal `latest` tag.
+
+ * Merge [#100](https://github.com/Olical/react-faux-dom/pull/100) - Change the `withFauxDOM` HOC so it only uses ES5 features. Fixes issues around uglifyjs after the v4.0.0 release.
+
 ## v4.0.1 (under `next` tag)
 
 Pre-release to confirm [#100](https://github.com/Olical/react-faux-dom/pull/100) works as expected.
