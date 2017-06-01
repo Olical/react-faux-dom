@@ -1,5 +1,9 @@
 # react-faux-dom changes
 
+## v4.0.1 (under `next` tag)
+
+Pre-release to confirm [#100](https://github.com/Olical/react-faux-dom/pull/100) works as expected.
+
 ## v4.0.0
 
  * Merge [#91](https://github.com/Olical/react-faux-dom/pull/91) - Replace mixins with higher order components.
