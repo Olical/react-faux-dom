@@ -1,4 +1,4 @@
-var ReactFauxDOM = require('../..')
+var ReactFauxDOM = require('../../lib/ReactFauxDOM')
 var d3 = require('d3')
 require('d3-selection-multi')
 
