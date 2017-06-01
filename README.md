@@ -49,7 +49,7 @@ You can find the latest version of the UMD version at https://unpkg.com/react-fa
 
 ## Example
 
-Complex usage with [D3][], ES6 modules and animations.
+Complex usage with [D3][], ES6 modules and animations. Clone it from [here][minimal-example-source].
 
 ```javascript
 import React from 'react'
@@ -57,8 +57,11 @@ import * as d3 from 'd3'
 import {withFauxDOM} from 'react-faux-dom'
 
 class MyReactComponent extends React.Component {
-  state = {
-    chart: 'loading...'
+  constructor(props) {
+    super(props)
+    this.state = {
+      chart: 'loading...'
+    }
   }
 
   componentDidMount () {
@@ -81,7 +84,7 @@ class MyReactComponent extends React.Component {
       </div>
     )
   }
-})
+}
 
 export default withFauxDOM(MyReactComponent)
 ```
@@ -156,3 +159,4 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [rd3-demo]: https://rd3.now.sh
 [rd3-source]: https://github.com/tibotiber/rd3
 [AdilBaaj-post]: https://blog.sicara.com/a-starting-point-on-using-d3-with-react-869fdf3dfaf
+[minimal-example-source]: https://github.com/tibotiber/rfd-min-example

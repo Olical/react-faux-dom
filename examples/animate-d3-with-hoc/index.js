@@ -3,17 +3,21 @@ var ReactDOM = require('react-dom')
 var withFauxDOM = require('../../lib/ReactFauxDOM').withFauxDOM
 var d3 = require('d3')
 
-var Chart = React.createClass({
-  getInitialState: function () {
-    return { look: 'stacked' }
-  },
-  render: function () {
+class Chart extends React.Component {
+  constructor (props) {
+    super(props)
+    this.toggle = this.toggle.bind(this)
+    this.state = { look: 'stacked' }
+  }
+
+  render () {
     return <div>
       <button onClick={this.toggle}>Toggle</button>
       {this.state.chart}
     </div>
-  },
-  toggle: function () {
+  }
+
+  toggle () {
     if (this.state.look === 'stacked') {
       this.setState({ look: 'grouped' })
       this.transitionGrouped()
@@ -21,8 +25,9 @@ var Chart = React.createClass({
       this.setState({ look: 'stacked' })
       this.transitionStacked()
     }
-  },
-  componentDidMount: function () {
+  }
+
+  componentDidMount () {
     // This will create a faux div and store its virtual DOM
     // in state.chart
     var faux = this.connectFauxDOM('div', 'chart')
@@ -150,7 +155,7 @@ var Chart = React.createClass({
       return a.map(function (d, i) { return {x: i, y: Math.max(0, d)} })
     }
   }
-})
+}
 
 var FauxChart = withFauxDOM(Chart)
 

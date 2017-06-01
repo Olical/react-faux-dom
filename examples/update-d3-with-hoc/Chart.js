@@ -1,33 +1,37 @@
 var React = require('react')
+var PropTypes = require('prop-types')
 var withFauxDOM = require('../../lib/ReactFauxDOM').withFauxDOM
 var d3 = require('d3')
 
-var Chart = React.createClass({
-  propsTypes: {
-    title: React.PropTypes.string.isRequired,
-    data: React.PropTypes.arrayOf(React.PropTypes.number).isRequired
-  },
-  getInitialState: function () {
-    return {
+class Chart extends React.Component {
+  constructor (props) {
+    super(props)
+    this.renderD3 = this.renderD3.bind(this)
+    this.updateD3 = this.updateD3.bind(this)
+    this.state = {
       chart: 'loading...'
     }
-  },
-  componentDidMount: function () {
+  }
+
+  componentDidMount () {
     this.renderD3()
-  },
-  componentDidUpdate: function (prevProps, prevState) {
+  }
+
+  componentDidUpdate (prevProps, prevState) {
     if (this.props !== prevProps) {
       this.updateD3()
     }
-  },
-  render: function () {
+  }
+
+  render () {
     return (
       <div>
         {this.state.chart}
       </div>
     )
-  },
-  renderD3: function () {
+  }
+
+  renderD3 () {
     var data = this.props.data
 
     // This will create a faux div and store its virtual DOM in state.chart
@@ -74,8 +78,9 @@ var Chart = React.createClass({
       })
       .attr('cy', yBuffer)
       .attr('r', function (d, i) { return d })
-  },
-  updateD3: function () {
+  }
+
+  updateD3 () {
     var data = this.props.data
 
     /* code below from Alan Smith except changes mentioned previously */
@@ -110,7 +115,12 @@ var Chart = React.createClass({
 
     d3.select('text').text(this.props.title)
   }
-})
+}
+
+Chart.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(PropTypes.number).isRequired
+}
 
 const FauxChart = withFauxDOM(Chart)
 
