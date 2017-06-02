@@ -15,7 +15,8 @@ class Chart extends React.Component {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (this.props !== prevProps) {
+    // do not compare props.chart as it gets updated in updateD3()
+    if (this.props.data !== prevProps.data) {
       this.updateD3()
     }
   }

@@ -11,10 +11,12 @@ class Chart extends React.Component {
   }
 
   render () {
-    return <div>
-      <button onClick={this.toggle}>Toggle</button>
-      {this.props.chart}
-    </div>
+    return (
+      <div>
+        <button onClick={this.toggle}>Toggle</button>
+        {this.props.chart}
+      </div>
+    )
   }
 
   toggle () {
@@ -155,6 +157,10 @@ class Chart extends React.Component {
       return a.map(function (d, i) { return {x: i, y: Math.max(0, d)} })
     }
   }
+}
+
+Chart.defaultProps = {
+  chart: 'loading'
 }
 
 var FauxChart = withFauxDOM(Chart)
