@@ -32,7 +32,7 @@ d3.performSomeAnimation(faux)
 this.props.animateFauxDOM(3500) // duration + margin
 
 // Inside render.
-return {this.state.chart};
+return <div>{this.props.chart}</div>;
 ```
 
 ReactFauxDOM supports a wide range of DOM operations and will fool most libraries but it isn't exhaustive (the full DOM API is ludicrously large). It supports enough to work with D3 but will require you to fork and add to the project if you encounter something that's missing.
