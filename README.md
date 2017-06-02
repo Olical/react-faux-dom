@@ -115,10 +115,6 @@ make test
 make test-watch
 ```
 
-## Author
-
-[Oliver Caldwell][author-site] ([@OliverCaldwell][author-twitter])
-
 ## Unlicenced
 
 Find the full [unlicense][] in the `UNLICENSE` file, but here's a snippet.
@@ -130,8 +126,6 @@ Find the full [unlicense][] in the `UNLICENSE` file, but here's a snippet.
 Do what you want. Learn as much as you can. Unlicense more software.
 
 [unlicense]: http://unlicense.org/
-[author-site]: http://oli.me.uk/
-[author-twitter]: https://twitter.com/OliverCaldwell
 [d3]: http://d3js.org/
 [react]: http://facebook.github.io/react/
 [jsdom]: https://github.com/tmpvar/jsdom
