@@ -115,6 +115,13 @@ make test
 make test-watch
 ```
 
+## Maintainers
+
+This project is actively maintained by the following developers. Feel free to reach out if you'd like to join us and help out!
+
+ * [@Olical](https://github.com/Olical)
+ * [@tibotiber](https://github.com/tibotiber)
+
 ## Unlicenced
 
 Find the full [unlicense][] in the `UNLICENSE` file, but here's a snippet.
