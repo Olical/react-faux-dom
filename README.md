@@ -27,9 +27,9 @@ There is also an higher-order component available for convenience, giving you a 
 
 ```javascript
 // Inside componentWillMount.
-var faux = this.connectFauxDOM('div', 'chart')
+var faux = this.props.connectFauxDOM('div', 'chart')
 d3.performSomeAnimation(faux)
-this.animateFauxDOM(3500) // duration + margin
+this.props.animateFauxDOM(3500) // duration + margin
 
 // Inside render.
 return {this.state.chart};
@@ -57,21 +57,12 @@ import * as d3 from 'd3'
 import {withFauxDOM} from 'react-faux-dom'
 
 class MyReactComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      chart: 'loading...'
-    }
-  }
-
   componentDidMount () {
-    const faux = this.connectFauxDOM('div', 'chart')
-
+    const faux = this.props.connectFauxDOM('div', 'chart')
     d3.select(faux)
       .append('div')
       .html('Hello World!')
-
-    this.animateFauxDOM(800)
+    this.props.animateFauxDOM(800)
   }
 
   render () {
@@ -79,11 +70,15 @@ class MyReactComponent extends React.Component {
       <div>
         <h2>Here is some fancy data:</h2>
         <div className='renderedD3'>
-          {this.state.chart}
+          {this.props.chart}
         </div>
       </div>
     )
   }
+}
+
+MyReactComponent.defaultProps = {
+  chart: 'loading'
 }
 
 export default withFauxDOM(MyReactComponent)
