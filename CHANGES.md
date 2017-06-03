@@ -1,16 +1,24 @@
 # react-faux-dom changes
 
-## v4.0.2
+## v4.0.3
+
+This should have been v4.0.0 really, I sincerely apologise for breaking the previous three releases.
+
+ * Merge [#102](https://github.com/Olical/react-faux-dom/pull/102) - Redesign and fix the withFauxDOM HOC.
+
+withFauxDOM now passes the methods you need through the props. The documentation has been updated. For reasoning, see [#96](https://github.com/Olical/react-faux-dom/issues/96).
+
+## v4.0.2 - broken
 
 Same as v4.0.1 but under the normal `latest` tag.
 
  * Merge [#100](https://github.com/Olical/react-faux-dom/pull/100) - Change the `withFauxDOM` HOC so it only uses ES5 features. Fixes issues around uglifyjs after the v4.0.0 release.
 
-## v4.0.1 (under `next` tag)
+## v4.0.1 (under `next` tag) - broken
 
 Pre-release to confirm [#100](https://github.com/Olical/react-faux-dom/pull/100) works as expected.
 
-## v4.0.0
+## v4.0.0 - broken
 
  * Merge [#91](https://github.com/Olical/react-faux-dom/pull/91) - Replace mixins with higher order components.
  * Merge [#88](https://github.com/Olical/react-faux-dom/pull/88) - Add CDNJS version to README.md.
