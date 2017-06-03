@@ -11,10 +11,12 @@ class Chart extends React.Component {
   }
 
   render () {
-    return <div>
-      <button onClick={this.toggle}>Toggle</button>
-      {this.state.chart}
-    </div>
+    return (
+      <div>
+        <button onClick={this.toggle}>Toggle</button>
+        {this.props.chart}
+      </div>
+    )
   }
 
   toggle () {
@@ -30,7 +32,7 @@ class Chart extends React.Component {
   componentDidMount () {
     // This will create a faux div and store its virtual DOM
     // in state.chart
-    var faux = this.connectFauxDOM('div', 'chart')
+    var faux = this.props.connectFauxDOM('div', 'chart')
 
     var component = this
 
@@ -99,7 +101,7 @@ class Chart extends React.Component {
         .attr('y', function (d) { return y(d.y0 + d.y) })
         .attr('height', function (d) { return y(d.y0) - y(d.y0 + d.y) })
 
-    this.animateFauxDOM(800)
+    this.props.animateFauxDOM(800)
 
     svg.append('g')
         .attr('class', 'x axis')
@@ -118,7 +120,7 @@ class Chart extends React.Component {
           .attr('y', function (d) { return y(d.y) })
           .attr('height', function (d) { return height - y(d.y) })
 
-      component.animateFauxDOM(2000)
+      component.props.animateFauxDOM(2000)
     }
 
     this.transitionStacked = function () {
@@ -133,7 +135,7 @@ class Chart extends React.Component {
           .attr('x', function (d) { return x(d.x) })
           .attr('width', x.rangeBand())
 
-      component.animateFauxDOM(2000)
+      component.props.animateFauxDOM(2000)
     }
 
     // Inspired by Lee Byron's test data generator.
@@ -155,6 +157,10 @@ class Chart extends React.Component {
       return a.map(function (d, i) { return {x: i, y: Math.max(0, d)} })
     }
   }
+}
+
+Chart.defaultProps = {
+  chart: 'loading'
 }
 
 var FauxChart = withFauxDOM(Chart)

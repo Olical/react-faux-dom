@@ -8,9 +8,6 @@ class Chart extends React.Component {
     super(props)
     this.renderD3 = this.renderD3.bind(this)
     this.updateD3 = this.updateD3.bind(this)
-    this.state = {
-      chart: 'loading...'
-    }
   }
 
   componentDidMount () {
@@ -18,7 +15,8 @@ class Chart extends React.Component {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (this.props !== prevProps) {
+    // do not compare props.chart as it gets updated in updateD3()
+    if (this.props.data !== prevProps.data) {
       this.updateD3()
     }
   }
@@ -26,7 +24,7 @@ class Chart extends React.Component {
   render () {
     return (
       <div>
-        {this.state.chart}
+        {this.props.chart}
       </div>
     )
   }
@@ -35,7 +33,7 @@ class Chart extends React.Component {
     var data = this.props.data
 
     // This will create a faux div and store its virtual DOM in state.chart
-    var faux = this.connectFauxDOM('div', 'chart')
+    var faux = this.props.connectFauxDOM('div', 'chart')
 
     /*
        D3 code below by Alan Smith, http://bl.ocks.org/alansmithy/e984477a741bc56db5a5
@@ -90,7 +88,7 @@ class Chart extends React.Component {
     var lineLength = 400
 
     // reattach to faux dom
-    var faux = this.connectFauxDOM('div', 'chart')
+    var faux = this.props.connectFauxDOM('div', 'chart')
     var svgDoc = d3.select(faux).select('svg')
 
     // rejoin data
@@ -111,10 +109,14 @@ class Chart extends React.Component {
       .attr('cy', yBuffer)
       .attr('r', function (d, i) { return d })
 
-    this.animateFauxDOM(800)
+    this.props.animateFauxDOM(800)
 
     d3.select('text').text(this.props.title)
   }
+}
+
+Chart.defaultProps = {
+  chart: 'loading...'
 }
 
 Chart.propTypes = {

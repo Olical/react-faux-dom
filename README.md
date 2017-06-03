@@ -27,12 +27,12 @@ There is also an higher-order component available for convenience, giving you a 
 
 ```javascript
 // Inside componentWillMount.
-var faux = this.connectFauxDOM('div', 'chart')
+var faux = this.props.connectFauxDOM('div', 'chart')
 d3.performSomeAnimation(faux)
-this.animateFauxDOM(3500) // duration + margin
+this.props.animateFauxDOM(3500) // duration + margin
 
 // Inside render.
-return {this.state.chart};
+return <div>{this.props.chart}</div>;
 ```
 
 ReactFauxDOM supports a wide range of DOM operations and will fool most libraries but it isn't exhaustive (the full DOM API is ludicrously large). It supports enough to work with D3 but will require you to fork and add to the project if you encounter something that's missing.
@@ -57,21 +57,12 @@ import * as d3 from 'd3'
 import {withFauxDOM} from 'react-faux-dom'
 
 class MyReactComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      chart: 'loading...'
-    }
-  }
-
   componentDidMount () {
-    const faux = this.connectFauxDOM('div', 'chart')
-
+    const faux = this.props.connectFauxDOM('div', 'chart')
     d3.select(faux)
       .append('div')
       .html('Hello World!')
-
-    this.animateFauxDOM(800)
+    this.props.animateFauxDOM(800)
   }
 
   render () {
@@ -79,11 +70,15 @@ class MyReactComponent extends React.Component {
       <div>
         <h2>Here is some fancy data:</h2>
         <div className='renderedD3'>
-          {this.state.chart}
+          {this.props.chart}
         </div>
       </div>
     )
   }
+}
+
+MyReactComponent.defaultProps = {
+  chart: 'loading'
 }
 
 export default withFauxDOM(MyReactComponent)
@@ -120,9 +115,12 @@ make test
 make test-watch
 ```
 
-## Author
+## Maintainers
 
-[Oliver Caldwell][author-site] ([@OliverCaldwell][author-twitter])
+This project is actively maintained by the following developers. Feel free to reach out if you'd like to join us and help out!
+
+ * [@Olical](https://github.com/Olical)
+ * [@tibotiber](https://github.com/tibotiber)
 
 ## Unlicenced
 
@@ -135,8 +133,6 @@ Find the full [unlicense][] in the `UNLICENSE` file, but here's a snippet.
 Do what you want. Learn as much as you can. Unlicense more software.
 
 [unlicense]: http://unlicense.org/
-[author-site]: http://oli.me.uk/
-[author-twitter]: https://twitter.com/OliverCaldwell
 [d3]: http://d3js.org/
 [react]: http://facebook.github.io/react/
 [jsdom]: https://github.com/tmpvar/jsdom
