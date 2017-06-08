@@ -26,17 +26,23 @@ test('nested text', function (t) {
 
 test('auto default keys', function (t) {
   var el = mk()
+  // 0
   el.append('p')
-  el.append('p').attr('key', 'testing')
+  // 1
+  var sub = el.append('p').attr('key', 'testing')
+  // 1.0
+  sub.append('p')
+  // 2
   el.append('p').attr('foo', 'bar')
 
-  var tree = el.node().toReact()
+  var tree = el.node().toReact('test')
 
-  t.plan(5)
-  t.equal(tree.key, 'faux-dom-0')
-  t.equal(tree.props.children[0].key, 'faux-dom-0')
+  t.plan(6)
+  t.equal(tree.key, 'test')
+  t.notEqual(tree.props.children[0].key, undefined)
   t.equal(tree.props.children[1].key, 'testing')
-  t.equal(tree.props.children[2].key, 'faux-dom-2')
+  t.equal(tree.props.children[1].props.children._key, undefined)
+  t.notEqual(tree.props.children[2].key, undefined)
   t.equal(tree.props.children[2].props.foo, 'bar')
 })
 
@@ -51,7 +57,7 @@ test('pre-built React elements are rendered into the tree', function (t) {
   var tree = el.toReact()
 
   t.plan(1)
-  t.equal(tree.props.children[0].props.foo, 'bar')
+  t.equal(tree.props.children.props.foo, 'bar')
 })
 
 test('React elements customize data-* attributes are rendered into the tree', function (t) {
@@ -65,7 +71,7 @@ test('React elements customize data-* attributes are rendered into the tree', fu
   var tree = el.toReact()
 
   t.plan(1)
-  t.equal(tree.props.children[0].props['data-foo'], 'bar')
+  t.equal(tree.props.children.props['data-foo'], 'bar')
 })
 
 test('React elements aria-* attributes are rendered into the tree', function (t) {
@@ -79,7 +85,7 @@ test('React elements aria-* attributes are rendered into the tree', function (t)
   var tree = el.toReact()
 
   t.plan(1)
-  t.equal(tree.props.children[0].props['aria-hidden'], 'true')
+  t.equal(tree.props.children.props['aria-hidden'], 'true')
 })
 
 test('toReact does not mutate the state', function (t) {
