@@ -2,7 +2,7 @@
   "name": "react-faux-dom",
   "version": "4.0.3",
   "description": "DOM like data structure to be mutated by D3 et al, then rendered to React elements",
-  "main": "lib/ReactFauxDOM.js",
+  "main": "dist/ReactFauxDOM.min.js",
   "scripts": {
     "test": "standard && tape -r babel-register './test/**/*.js' | faucet",
     "prepublish": "npm test && make build"

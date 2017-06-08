@@ -1,5 +1,5 @@
 var test = require('tape')
-var ReactFauxDOM = require('..')
+var ReactFauxDOM = require('../lib/ReactFauxDOM')
 var Comp = require('./test-utils/component')
 var compareReactElements = require('./test-utils/compareReactElements')
 var sinon = require('sinon')
