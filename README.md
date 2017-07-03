@@ -49,7 +49,7 @@ You can find the latest version of the UMD version at https://unpkg.com/react-fa
 
 ## Example
 
-Complex usage with [D3][], ES6 modules and animations. Clone it from [here][minimal-example-source].
+Complex usage with [D3][], ES6 modules and animations. Clone it from [here][minimal-example-source], or try on in [codesandbox][minimal-example-sandbox].
 
 ```javascript
 import React from 'react'
@@ -87,14 +87,15 @@ export default withFauxDOM(MyReactComponent)
 ### More usage info:
 
  * Full [documentation][] with current DOM API coverage
- * [An example static chart ][lab-chart] ([source][lab-chart-source])
- * [An example animated chart using the HOC][hoc-animate-example] 
- * [An example chart with D3 updates using the HOC][hoc-update-example] 
- * [A simple example using state and events][lab-state] ([source][lab-state-source])
- * [A d3 sankey diagram builder][sankey-app] ([source][sankey-app-source])
- * [d3-react-sparkline][], a small component I built at [Qubit][]
- * [component-kit][], "UI-Kit for Rapidly Creating Dashboards"
- * [A demo dashboard with multiple charts][rd3-demo] ([source][rd3-source])
+ * An example static chart ([source][lab-chart-source], [article][lab-chart])
+ * An "hello world" example using the HOC ([source][minimal-example-source], [sandbox][minimal-example-sandbox])
+ * An example animated chart using the HOC ([source][hoc-animate-example], [sandbox][hoc-animate-sandbox])
+ * An example chart with D3 updates using the HOC ([source][hoc-update-example], [sandbox][hoc-update-sandbox])
+ * A simple example using state and events ([source][lab-state-source], [article][lab-state])
+ * A d3 sankey diagram builder ([source][sankey-app-source], [demo][sankey-app])
+ * `d3-react-sparkline`, a small component I built at [Qubit][] ([source][d3-react-sparkline])
+ * `component-kit`, "UI-Kit for Rapidly Creating Dashboards" ([source][component-kit])
+ * A demo dashboard with multiple charts ([source][rd3-source], [demo][rd3-demo])
 
 ### Related articles:
 
@@ -146,8 +147,10 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [react-motion]: https://github.com/chenglou/react-motion
 [sankey-app]: http://nick.balestra.ch/sankey/
 [sankey-app-source]: https://github.com/nickbalestra/sankey
-[hoc-animate-example]: ./examples/animate-d3-with-hoc
-[hoc-update-example]: ./examples/update-d3-with-hoc
+[hoc-animate-example]: https://github.com/tibotiber/rfd-animate-example
+[hoc-animate-sandbox]: https://codesandbox.io/s/github/tibotiber/rfd-animate-example/tree/master/
+[hoc-update-example]: https://github.com/tibotiber/rfd-update-example
+[hoc-update-sandbox]: https://codesandbox.io/s/JqYGAqlEJ
 [component-kit]: https://github.com/kennetpostigo/component-kit
 [unpkg]: https://unpkg.com/
 [Olical-post]: http://oli.me.uk/2015/09/09/d3-within-react-the-right-way/
@@ -156,3 +159,4 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [rd3-source]: https://github.com/tibotiber/rd3
 [AdilBaaj-post]: https://blog.sicara.com/a-starting-point-on-using-d3-with-react-869fdf3dfaf
 [minimal-example-source]: https://github.com/tibotiber/rfd-min-example
+[minimal-example-sandbox]: https://codesandbox.io/s/yzwyVZjP
