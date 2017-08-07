@@ -107,4 +107,9 @@ The `withFauxDOM()` HOC passes the following methods to your component via props
 
 Internally, the HOC uses **`drawFauxDOM()`** to render the fauxDOM to the virtual DOM. This method updates the component props (causing a render) with virtual DOM (through `node.toReact()`) for all previously `connect`ed faux nodes. Each node's representation will be on `this.props[name]`, where `name` is the one used in the `connect` call.
 
-The HOC will also take care of the necessary setup and teardown. To see it in action, check out the `animate-d3-with-hoc` and `update-d3-with-hoc` mini-apps in the `examples` folder.
+The HOC will also take care of the necessary setup and teardown. To see it in action, check out the `animate-d3-with-hoc` ([source][hoc-animate-example], [sandbox][hoc-animate-sandbox]) and `update-d3-with-hoc` ([source][hoc-update-example], [sandbox][hoc-update-sandbox])  mini-apps.
+
+[hoc-animate-example]: https://github.com/tibotiber/rfd-animate-example
+[hoc-animate-sandbox]: https://codesandbox.io/s/github/tibotiber/rfd-animate-example/tree/master/
+[hoc-update-example]: https://github.com/tibotiber/rfd-update-example
+[hoc-update-sandbox]: https://codesandbox.io/s/JqYGAqlEJ
