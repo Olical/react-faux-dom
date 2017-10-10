@@ -1,5 +1,9 @@
 # react-faux-dom changes
 
+## v4.0.5
+
+ * Merge [#115](https://github.com/Olical/react-faux-dom/pull/115) - Update a bunch of things.
+
 ## v4.0.4
 
  * Merge [#114](https://github.com/Olical/react-faux-dom/pull/114) - Move React to dev dependencies.
