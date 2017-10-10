@@ -1,5 +1,5 @@
-var test = require('tape')
-var isUndefined = require('../../lib/utils/isUndefined')
+import test from 'tape'
+import isUndefined from '../../lib/utils/isUndefined'
 
 test('not a undefined', function (t) {
   t.plan(1)

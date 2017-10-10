@@ -1,13 +1,13 @@
-var d3 = require('d3')
-var test = require('tape')
-var sinon = require('sinon')
-var mk = require('./test-utils/mk')
+import { event } from 'd3'
+import test from 'tape'
+import sinon from 'sinon'
+import mk from './test-utils/mk'
 
 var lastEvent
 
 function mkWithEvents () {
   var clickEvent = sinon.spy(function () {
-    lastEvent = d3.event
+    lastEvent = event
   })
   var mousedownEvent = sinon.spy()
 

@@ -1,5 +1,5 @@
-var test = require('tape')
-var mapValues = require('../../lib/utils/mapValues')
+import test from 'tape'
+import mapValues from '../../lib/utils/mapValues'
 
 test('maps to another object', function (t) {
   t.plan(1)

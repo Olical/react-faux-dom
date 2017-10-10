@@ -1,8 +1,8 @@
-var test = require('tape')
-var ReactFauxDOM = require('..')
-var Comp = require('./test-utils/component')
-var compareReactElements = require('./test-utils/compareReactElements')
-var sinon = require('sinon')
+import test from 'tape'
+import ReactFauxDOM from '..'
+import Comp from './test-utils/component'
+import compareReactElements from './test-utils/compareReactElements'
+import sinon from 'sinon'
 
 var Elem = ReactFauxDOM.createElement
 

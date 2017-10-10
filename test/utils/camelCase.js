@@ -1,5 +1,5 @@
-var test = require('tape')
-var camelCase = require('../../lib/utils/camelCase')
+import test from 'tape'
+import camelCase from '../../lib/utils/camelCase'
 
 test('camelCase on a camelCase string does nothing', function (t) {
   t.plan(1)
