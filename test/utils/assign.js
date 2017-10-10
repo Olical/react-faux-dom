@@ -1,5 +1,5 @@
-var test = require('tape')
-var assign = require('../../lib/utils/assign')
+import test from 'tape'
+import assign from '../../lib/utils/assign'
 
 test('cloning an object keeps all data', function (t) {
   t.plan(1)

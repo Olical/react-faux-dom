@@ -1,5 +1,5 @@
-var test = require('tape')
-var isString = require('../../lib/utils/isString')
+import test from 'tape'
+import isString from '../../lib/utils/isString'
 
 test('not a string', function (t) {
   t.plan(1)

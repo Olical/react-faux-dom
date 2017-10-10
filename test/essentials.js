@@ -1,6 +1,6 @@
-var test = require('tape')
-var ReactFauxDOM = require('..')
-var Element = require('../lib/Element')
+import test from 'tape'
+import ReactFauxDOM from '..'
+import Element from '../lib/Element'
 
 test('has a create method', function (t) {
   t.plan(1)

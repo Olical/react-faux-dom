@@ -22,4 +22,4 @@ function Component (noinit) {
   return instance
 }
 
-module.exports = Component
+export default Component

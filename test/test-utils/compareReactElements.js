@@ -7,4 +7,4 @@ function compareReactElements (t, first, second) {
   t.equal(first.type, second.type)
 }
 
-module.exports = compareReactElements
+export default compareReactElements

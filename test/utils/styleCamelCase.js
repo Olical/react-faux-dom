@@ -1,5 +1,5 @@
-var test = require('tape')
-var styleCamelCase = require('../../lib/utils/styleCamelCase')
+import test from 'tape'
+import styleCamelCase from '../../lib/utils/styleCamelCase'
 
 test('works like normal camelCase', function (t) {
   t.plan(1)
