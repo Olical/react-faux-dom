@@ -1,5 +1,6 @@
 import React from 'react'
 import sinon from 'sinon'
+import './configure'
 import { shallow } from 'enzyme'
 import withFauxDOM from '../../lib/withFauxDOM'
 
