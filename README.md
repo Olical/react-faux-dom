@@ -82,6 +82,26 @@ MyReactComponent.defaultProps = {
 export default withFauxDOM(MyReactComponent)
 ```
 
+### Independant documents
+
+By default all Elements share an emulated `window` at 
+`el.ownerDocument.defaultView` you can create independant documents with:
+
+```javascript
+import React from 'react'
+import rfdFactory from 'react-faux-dom/lib/factory'
+
+function getParagraph() {
+  const { ReactFauxDOM } = rfdFactory();
+  return new ReactFauxDOM.Element('p', someDiv);
+}
+
+const p1 = getParagraph();
+const p2 = getPragraph();
+
+assert(p1.ownerDocument !== p2.ownerDocument);
+```
+
 ### More usage info:
 
  * Full [documentation][] with current DOM API coverage
