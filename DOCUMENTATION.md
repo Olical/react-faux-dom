@@ -101,6 +101,7 @@ To use it, simply import it with `import {withFauxDOM} from 'react-faux-dom'` or
 The `withFauxDOM()` HOC passes the following methods to your component via props:
 
 * **`connectFauxDOM(node, name)`**: This will store the `node` element and make it available via `this.props[name]`. It also makes an asynchronous call to `drawFauxDOM`. The node can be a faux element or a string, in which case a faux element is instantiated. The node is returned for convenience. A component can have multiple connected nodes. If the node already exists, it will be reused by default. If you need to force a new node, use the form `connectFauxDOM(node, name, discardNode)` setting the optional third argument `discardNode` to `true`.
+* **`drawFauxDOM()`**: Render the fauxDOM to the virtual DOM with no animation.
 * **`animateFauxDOM(duration)`**: This will make a call to `drawFauxDOM` every 16 milliseconds until the duration has expired.
 * **`stopAnimatingFauxDOM()`**: Cancels eventual ongoing animation
 * **`isAnimatingFauxDOM()`**: Returns true or false depending on whether an animation is ongoing.
