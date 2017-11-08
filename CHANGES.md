@@ -1,5 +1,10 @@
 # react-faux-dom changes
 
+## v4.1.0
+
+ * Merge [#123](https://github.com/Olical/react-faux-dom/pull/123) - Expose drawFauxDOM in HOC.
+ * Merge [#116](https://github.com/Olical/react-faux-dom/pull/116) - Support independent documents with a factory.
+
 ## v4.0.5
 
  * Merge [#115](https://github.com/Olical/react-faux-dom/pull/115) - Update a bunch of things.
