@@ -92,7 +92,7 @@ import React from 'react'
 import rfdFactory from 'react-faux-dom/lib/factory'
 
 function getParagraph() {
-  const { ReactFauxDOM } = rfdFactory();
+  const ReactFauxDOM = rfdFactory();
   return new ReactFauxDOM.Element('p', someDiv);
 }
 
