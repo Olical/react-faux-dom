@@ -97,7 +97,7 @@ function getParagraph() {
 }
 
 const p1 = getParagraph();
-const p2 = getPragraph();
+const p2 = getParagraph();
 
 assert(p1.ownerDocument !== p2.ownerDocument);
 ```
