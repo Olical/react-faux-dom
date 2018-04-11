@@ -82,10 +82,10 @@ MyReactComponent.defaultProps = {
 export default withFauxDOM(MyReactComponent)
 ```
 
-### Independant documents
+### Independent documents
 
 By default all Elements share an emulated `window` at 
-`el.ownerDocument.defaultView` you can create independant documents with:
+`el.ownerDocument.defaultView` you can create independent documents with:
 
 ```javascript
 import React from 'react'
