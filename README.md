@@ -168,7 +168,7 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [hoc-animate-example]: https://github.com/tibotiber/rfd-animate-example
 [hoc-animate-sandbox]: https://codesandbox.io/s/github/tibotiber/rfd-animate-example/tree/master/
 [hoc-update-example]: https://github.com/tibotiber/rfd-update-example
-[hoc-update-sandbox]: https://codesandbox.io/s/JqYGAqlEJ
+[hoc-update-sandbox]: https://codesandbox.io/s/github/tibotiber/rfd-update-example/tree/master/
 [component-kit]: https://github.com/kennetpostigo/component-kit
 [unpkg]: https://unpkg.com/
 [Olical-post]: http://oli.me.uk/2015/09/09/d3-within-react-the-right-way/
@@ -177,4 +177,4 @@ Do what you want. Learn as much as you can. Unlicense more software.
 [rd3-source]: https://github.com/tibotiber/rd3
 [AdilBaaj-post]: https://blog.sicara.com/a-starting-point-on-using-d3-with-react-869fdf3dfaf
 [minimal-example-source]: https://github.com/tibotiber/rfd-min-example
-[minimal-example-sandbox]: https://codesandbox.io/s/yzwyVZjP
+[minimal-example-sandbox]: https://codesandbox.io/s/github/tibotiber/rfd-min-example/tree/master/
