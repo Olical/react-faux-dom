@@ -113,4 +113,4 @@ The HOC will also take care of the necessary setup and teardown. To see it in ac
 [hoc-animate-example]: https://github.com/tibotiber/rfd-animate-example
 [hoc-animate-sandbox]: https://codesandbox.io/s/github/tibotiber/rfd-animate-example/tree/master/
 [hoc-update-example]: https://github.com/tibotiber/rfd-update-example
-[hoc-update-sandbox]: https://codesandbox.io/s/JqYGAqlEJ
+[hoc-update-sandbox]: https://codesandbox.io/s/github/tibotiber/rfd-update-example/tree/master/
