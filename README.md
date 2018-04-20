@@ -23,6 +23,10 @@ class SomeChart extends React.Component {
 
 There is also an higher-order component available for convenience, giving you a clean API and animation support:
 
+> Note: You only need to use the higher order component if you require animation support. If what you're doing does not require animations / physics / anything that requires D3 to mutate the DOM regularly then you should be using the `createElement` and `toReact` API shown above.
+>
+> If you want to use lots of animations, physics and force layout tools I'd recommend you consider other approaches to embedding D3 (or similar tool) within your React render tree. Such as disabling all component updates and mounting D3 yourself.
+
 ```javascript
 // Inside componentWillMount.
 var faux = this.props.connectFauxDOM('div', 'chart')
