@@ -2,6 +2,18 @@
 
 DOM like data structure to be mutated by [D3][] et al, then rendered to [React][] elements.
 
+ReactFauxDOM supports a wide range of DOM operations and will fool most libraries but it isn't exhaustive (the full DOM API is ludicrously large). It supports enough to work with D3 but will require you to fork and add to the project if you encounter something that's missing.
+
+You can think of this as a bare bones [jsdom][] that's built to bridge the gap between the declarative React and the imperative JavaScript world. We just need to expand it as we go along since jsdom is a huge project that solves different problems.
+
+I'm trying to keep it light so as not to slow down your render function. I want efficient, declarative and stateless code, but I don't want to throw away previous tools to get there.
+
+## Example
+
+### Default
+
+This style of calling `createElement` and `toReact` is the default API, it's easy to use and fits into the normal React flow but won't allow you to perform animations or D3 force layouts, for example.
+
 ```javascript
 class SomeChart extends React.Component {
   render () {
@@ -21,35 +33,7 @@ class SomeChart extends React.Component {
 // Yields: <div style='color: red;' class='box'></div>
 ```
 
-There is also an higher-order component available for convenience, giving you a clean API and animation support:
-
-> Note: You only need to use the higher order component if you require animation support. If what you're doing does not require animations / physics / anything that requires D3 to mutate the DOM regularly then you should be using the `createElement` and `toReact` API shown above.
->
-> If you want to use lots of animations, physics and force layout tools I'd recommend you consider other approaches to embedding D3 (or similar tool) within your React render tree. Such as disabling all component updates and mounting D3 yourself.
-
-```javascript
-// Inside componentWillMount.
-var faux = this.props.connectFauxDOM('div', 'chart')
-d3.performSomeAnimation(faux)
-this.props.animateFauxDOM(3500) // duration + margin
-
-// Inside render.
-return <div>{this.props.chart}</div>;
-```
-
-ReactFauxDOM supports a wide range of DOM operations and will fool most libraries but it isn't exhaustive (the full DOM API is ludicrously large). It supports enough to work with D3 but will require you to fork and add to the project if you encounter something that's missing.
-
-You can think of this as a bare bones [jsdom][] that's built to bridge the gap between the declarative React and the imperative JavaScript world. We just need to expand it as we go along since jsdom is a huge project that solves different problems.
-
-I'm trying to keep it light so as not to slow down your render function. I want efficient, declarative and stateless code, but I don't want to throw away previous tools to get there.
-
-## Installation
-
-You can install the package `react-faux-dom` from npm as you usually would. Then use webpack or browserify (etc) to bundle the source into your build. If you need a pre-built UMD version you can use [unpkg][].
-
-You can find the latest version of the UMD version at https://unpkg.com/react-faux-dom/dist/ReactFauxDOM.min.js
-
-## Example
+### With animation helper
 
 Complex usage with [D3][], ES6 modules and animations. Clone it from [here][minimal-example-source], or try on in [codesandbox][minimal-example-sandbox].
 
@@ -85,6 +69,12 @@ MyReactComponent.defaultProps = {
 
 export default withFauxDOM(MyReactComponent)
 ```
+
+## Installation
+
+You can install the package `react-faux-dom` from npm as you usually would. Then use webpack or browserify (etc) to bundle the source into your build. If you need a pre-built UMD version you can use [unpkg][].
+
+You can find the latest version of the UMD version at https://unpkg.com/react-faux-dom/dist/ReactFauxDOM.min.js
 
 ### Independent documents
 
