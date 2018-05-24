@@ -70,6 +70,17 @@ MyReactComponent.defaultProps = {
 export default withFauxDOM(MyReactComponent)
 ```
 
+## Limitations
+
+This library is intended to be used to build a React DOM tree from some mutable intermediate value which is then thrown away inside a `render` function. This means things that require mutation of the DOM, such as D3's animations, zooming, dragging and brushing will not work.
+
+Static charts will work fine out of the box, you can use this tool to translate SVG tools into DOM managed by React easily. If you wish to start adding in animations you'll have to use the `withFauxDOM` higher order component mentioned above and in a few of the examples.
+
+Before you go to use this tool, stop and think:
+
+ * Am I trying to build static DOM within a render method? - This is fine.
+ * Am I trying to hook up timers and event listeners with a 3rd party tool to manipulate some DOM after I have inserted it into the page? - This is not going to work.
+
 ## Installation
 
 You can install the package `react-faux-dom` from npm as you usually would. Then use webpack or browserify (etc) to bundle the source into your build. If you need a pre-built UMD version you can use [unpkg][].
