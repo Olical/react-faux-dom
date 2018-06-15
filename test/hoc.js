@@ -100,6 +100,17 @@ test('stopAnimatingFauxDOM works as expected', function (t) {
   }, 500)
 })
 
+test('stopDrawFauxDOM works as expected', function (t) {
+  t.plan(1)
+  var comp = Comp()
+  comp.drawFauxDOM = sinon.spy()
+  comp.connectFauxDOM('div', 'a_div')
+  comp.componentWillUnmount()
+  setTimeout(function () {
+    t.ok(comp.drawFauxDOM.notCalled)
+  })
+})
+
 test('componentWillMount initialises correctly', function (t) {
   t.plan(2)
   var comp = Comp(true)
@@ -109,9 +120,11 @@ test('componentWillMount initialises correctly', function (t) {
 })
 
 test('componentWillUnmount cleans up correctly', function (t) {
-  t.plan(1)
+  t.plan(2)
   var comp = Comp()
   comp.stopAnimatingFauxDOM = sinon.spy()
+  comp.stopDrawFauxDOM = sinon.spy()
   comp.componentWillUnmount()
-  t.equal(comp.stopAnimatingFauxDOM.callCount, 1)
+  t.ok(comp.stopAnimatingFauxDOM.calledOnce)
+  t.ok(comp.stopDrawFauxDOM.calledOnce)
 })
