@@ -105,7 +105,7 @@ test('stopDrawFauxDOM works as expected', function (t) {
   var comp = Comp()
   comp.drawFauxDOM = sinon.spy()
   comp.connectFauxDOM('div', 'a_div')
-  comp.componentWillUnmount()
+  comp.stopDrawFauxDOM()
   setTimeout(function () {
     t.ok(comp.drawFauxDOM.notCalled)
   })
