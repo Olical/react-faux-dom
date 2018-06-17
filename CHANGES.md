@@ -1,5 +1,9 @@
 # react-faux-dom changes
 
+## v4.2.0
+
+ * Merge [#133](https://github.com/Olical/react-faux-dom/pull/133) - Clean up HOC timers on unmount.
+
 ## v4.1.0
 
  * Merge [#123](https://github.com/Olical/react-faux-dom/pull/123) - Expose drawFauxDOM in HOC.
