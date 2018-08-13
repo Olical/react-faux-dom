@@ -138,3 +138,18 @@ test('NS methods behave the same', function (t) {
   t.plan(1)
   t.equal(el.getAttributeNS('xlink', 'href'), 'localhost')
 })
+
+test('.enter() weirdness from https://github.com/Olical/react-faux-dom/issues/135', function (t) {
+  var el = mk()
+  var calledWith = 'not called'
+
+  el
+    .selectAll('.node')
+    .data([10])
+    .enter()
+    .append('circle')
+    .attr('r', d => (calledWith = d))
+
+  t.plan(1)
+  t.equal(calledWith, 10)
+})
