@@ -153,3 +153,28 @@ test('.enter() weirdness from https://github.com/Olical/react-faux-dom/issues/13
   t.plan(1)
   t.equal(calledWith, 10)
 })
+
+test('cloneNode', function (t) {
+  var el = mk()
+
+  el
+    .append('div')
+    .html('Hello!')
+    .style('width', '100px')
+    .attr('data-foo', '1234')
+    .clone()
+    .html('World!')
+    .style('width', '200px')
+    .attr('data-foo', '4321')
+
+  var node = el.node()
+
+  t.plan(7)
+  t.equal(node.children.length, 2)
+  t.equal(node.children[0].text, 'Hello!')
+  t.equal(node.children[1].text, 'World!')
+  t.equal(node.children[0].style.width, '100px')
+  t.equal(node.children[1].style.width, '200px')
+  t.equal(node.children[0].props['data-foo'], '1234')
+  t.equal(node.children[1].props['data-foo'], '4321')
+})
