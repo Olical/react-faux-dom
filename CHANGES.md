@@ -1,5 +1,9 @@
 # react-faux-dom changes
 
+## v4.3.0
+
+ * Merge [#143](https://github.com/Olical/react-faux-dom/pull/143) - Support D3 selection cloning.
+
 ## v4.2.0
 
  * Merge [#133](https://github.com/Olical/react-faux-dom/pull/133) - Clean up HOC timers on unmount.
