@@ -15,6 +15,7 @@ function Component (noinit) {
       return <div>Fake Component</div>
     }
   }
+  MockComponent.someStatics = { foo: 'bar' }
   var comp = shallow(React.createElement(withFauxDOM(MockComponent)))
   var instance = comp.instance()
   instance.setState = sinon.spy()

@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "create-react-class": "^15.5.3",
+    "hoist-non-react-statics": "^3.3.0",
     "query-selector": "^1.0.9",
     "style-attr": "^1.0.1"
   },
