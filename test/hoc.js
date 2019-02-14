@@ -128,3 +128,9 @@ test('componentWillUnmount cleans up correctly', function (t) {
   t.ok(comp.stopAnimatingFauxDOM.calledOnce)
   t.ok(comp.stopDrawFauxDOM.calledOnce)
 })
+
+test('hoist non-react statics', function (t) {
+  t.plan(1)
+  var Component = Object.getPrototypeOf(Comp()).constructor
+  t.deepEqual(Component.someStatics, { foo: 'bar' })
+})
