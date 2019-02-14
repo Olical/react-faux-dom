@@ -1,5 +1,9 @@
 # react-faux-dom changes
 
+## v4.4.0
+
+ * Merge [#145](https://github.com/Olical/react-faux-dom/pull/145) - Copy static properties through the higher order component.
+
 ## v4.3.0
 
  * Merge [#143](https://github.com/Olical/react-faux-dom/pull/143) - Support D3 selection cloning.
