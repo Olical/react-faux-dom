@@ -71,3 +71,15 @@ test('cloneNode', function (t) {
   t.equal(cloneParentEl.childNodes[1].type, el.nodeName)
   t.equal(cloneParentEl.childNodes[2].nodeType, 3)
 })
+
+test.only('compareDocumentPosition', function (t) {
+  var parentEl = ReactFauxDOM.createElement('div')
+  var siblingOne = ReactFauxDOM.createElement('div')
+  var siblingTwo = ReactFauxDOM.createElement('div')
+  parentEl.appendChild(siblingOne)
+  parentEl.appendChild(siblingTwo)
+
+  t.plan(2)
+  t.equal(parentEl.compareDocumentPosition(siblingOne), Element.DOCUMENT_POSITION_CONTAINS)
+  t.equal(siblingOne.compareDocumentPosition(siblingTwo), Element.DOCUMENT_POSITION_PRECEDING)
+})
