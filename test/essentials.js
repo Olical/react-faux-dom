@@ -80,6 +80,12 @@ test.only('compareDocumentPosition', function (t) {
   parentEl.appendChild(siblingTwo)
 
   t.plan(2)
-  t.equal(parentEl.compareDocumentPosition(siblingOne), Element.DOCUMENT_POSITION_CONTAINS)
-  t.equal(siblingOne.compareDocumentPosition(siblingTwo), Element.DOCUMENT_POSITION_PRECEDING)
+  t.equal(
+    parentEl.compareDocumentPosition(siblingOne),
+    Element.DOCUMENT_POSITION_FOLLOWING + Element.DOCUMENT_POSITION_CONTAINED_BY
+  )
+  t.equal(
+    siblingOne.compareDocumentPosition(siblingTwo),
+    Element.DOCUMENT_POSITION_FOLLOWING
+  )
 })
