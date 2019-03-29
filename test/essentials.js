@@ -73,19 +73,61 @@ test('cloneNode', function (t) {
 })
 
 test.only('compareDocumentPosition', function (t) {
+  /*
+   * DOM-structure
+   * <documentEl>
+   *   <parentEl>
+   *     <siblingOne />
+   *     <siblingTwo />
+   *   </parentEl>
+   *   <otherEl>
+   *     <siblingThree />
+   *   </otherEl>
+   * </documentEl>
+   * ---
+   * <otherDocumentEl />
+   */
+  var documentEl = ReactFauxDOM.createElement('div')
   var parentEl = ReactFauxDOM.createElement('div')
   var siblingOne = ReactFauxDOM.createElement('div')
   var siblingTwo = ReactFauxDOM.createElement('div')
+  var otherEl = ReactFauxDOM.createElement('div')
+  var siblingThree = ReactFauxDOM.createElement('div')
+  var otherDocumentEl = ReactFauxDOM.createElement('div')
+
+  documentEl.appendChild(parentEl)
+  documentEl.appendChild(otherEl)
   parentEl.appendChild(siblingOne)
   parentEl.appendChild(siblingTwo)
+  otherEl.appendChild(siblingThree)
 
-  t.plan(2)
+  t.plan(7)
+  t.equal(
+    siblingOne.compareDocumentPosition(siblingTwo),
+    Element.DOCUMENT_POSITION_FOLLOWING
+  )
+  t.equal(
+    siblingTwo.compareDocumentPosition(siblingOne),
+    Element.DOCUMENT_POSITION_PRECEDING
+  )
   t.equal(
     parentEl.compareDocumentPosition(siblingOne),
     Element.DOCUMENT_POSITION_FOLLOWING + Element.DOCUMENT_POSITION_CONTAINED_BY
   )
   t.equal(
-    siblingOne.compareDocumentPosition(siblingTwo),
+    siblingTwo.compareDocumentPosition(siblingThree),
     Element.DOCUMENT_POSITION_FOLLOWING
+  )
+  t.equal(
+    siblingTwo.compareDocumentPosition(parentEl),
+    Element.DOCUMENT_POSITION_PRECEDING + Element.DOCUMENT_POSITION_CONTAINS
+  )
+  t.equal(
+    siblingTwo.compareDocumentPosition(otherEl),
+    Element.DOCUMENT_POSITION_FOLLOWING
+  )
+  t.equal(
+    documentEl.compareDocumentPosition(otherDocumentEl),
+    Element.DOCUMENT_POSITION_DISCONNECTED
   )
 })
