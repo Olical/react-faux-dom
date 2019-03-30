@@ -72,7 +72,7 @@ test('cloneNode', function (t) {
   t.equal(cloneParentEl.childNodes[2].nodeType, 3)
 })
 
-test.only('compareDocumentPosition', function (t) {
+test('compareDocumentPosition', function (t) {
   /*
    * DOM-structure
    * <documentEl>
