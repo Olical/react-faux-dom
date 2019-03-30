@@ -101,33 +101,41 @@ test('compareDocumentPosition', function (t) {
   parentEl.appendChild(siblingTwo)
   otherEl.appendChild(siblingThree)
 
-  t.plan(8)
+  t.plan(10)
   t.equal(
-    siblingOne.compareDocumentPosition(siblingTwo),
+    siblingOne.compareDocumentPosition(siblingTwo) & Element.DOCUMENT_POSITION_FOLLOWING,
     Element.DOCUMENT_POSITION_FOLLOWING
   )
   t.equal(
-    siblingTwo.compareDocumentPosition(siblingOne),
+    siblingTwo.compareDocumentPosition(siblingOne) & Element.DOCUMENT_POSITION_PRECEDING,
     Element.DOCUMENT_POSITION_PRECEDING
   )
   t.equal(
-    parentEl.compareDocumentPosition(siblingOne),
-    Element.DOCUMENT_POSITION_FOLLOWING + Element.DOCUMENT_POSITION_CONTAINED_BY
+    parentEl.compareDocumentPosition(siblingOne) & Element.DOCUMENT_POSITION_FOLLOWING,
+    Element.DOCUMENT_POSITION_FOLLOWING
+  )
+  t.equal(
+    parentEl.compareDocumentPosition(siblingOne) & Element.DOCUMENT_POSITION_CONTAINED_BY,
+    Element.DOCUMENT_POSITION_CONTAINED_BY
   )
   t.equal(
     siblingTwo.compareDocumentPosition(siblingThree),
     Element.DOCUMENT_POSITION_FOLLOWING
   )
   t.equal(
-    siblingTwo.compareDocumentPosition(parentEl),
-    Element.DOCUMENT_POSITION_PRECEDING + Element.DOCUMENT_POSITION_CONTAINS
+    siblingTwo.compareDocumentPosition(parentEl) & Element.DOCUMENT_POSITION_PRECEDING,
+    Element.DOCUMENT_POSITION_PRECEDING
   )
   t.equal(
-    siblingTwo.compareDocumentPosition(otherEl),
+    siblingTwo.compareDocumentPosition(parentEl) & Element.DOCUMENT_POSITION_CONTAINS,
+    Element.DOCUMENT_POSITION_CONTAINS
+  )
+  t.equal(
+    siblingTwo.compareDocumentPosition(otherEl) & Element.DOCUMENT_POSITION_FOLLOWING,
     Element.DOCUMENT_POSITION_FOLLOWING
   )
   t.equal(
-    documentEl.compareDocumentPosition(otherDocumentEl),
+    documentEl.compareDocumentPosition(otherDocumentEl) & Element.DOCUMENT_POSITION_DISCONNECTED,
     Element.DOCUMENT_POSITION_DISCONNECTED
   )
   t.equal(documentEl.compareDocumentPosition(documentEl), 0)
