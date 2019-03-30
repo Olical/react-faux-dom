@@ -101,7 +101,7 @@ test.only('compareDocumentPosition', function (t) {
   parentEl.appendChild(siblingTwo)
   otherEl.appendChild(siblingThree)
 
-  t.plan(7)
+  t.plan(8)
   t.equal(
     siblingOne.compareDocumentPosition(siblingTwo),
     Element.DOCUMENT_POSITION_FOLLOWING
@@ -130,4 +130,5 @@ test.only('compareDocumentPosition', function (t) {
     documentEl.compareDocumentPosition(otherDocumentEl),
     Element.DOCUMENT_POSITION_DISCONNECTED
   )
+  t.equal(documentEl.compareDocumentPosition(documentEl), 0)
 })
