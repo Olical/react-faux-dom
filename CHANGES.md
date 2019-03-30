@@ -1,5 +1,9 @@
 # react-faux-dom changes
 
+## v4.4.1
+
+ * Replace a couple of `let` keywords with `var` because it was breaking some older environments and tools. See [#147](https://github.com/Olical/react-faux-dom/issues/147) for example.
+
 ## v4.4.0
 
  * Merge [#145](https://github.com/Olical/react-faux-dom/pull/145) - Copy static properties through the higher order component.
