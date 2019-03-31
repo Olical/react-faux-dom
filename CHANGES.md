@@ -1,5 +1,9 @@
 # react-faux-dom changes
 
+## v4.5.0
+
+ * Merge [#148](https://github.com/Olical/react-faux-dom/pull/148) - Add `node.compareDocumentPosition` support.
+
 ## v4.4.1
 
  * Replace a couple of `let` keywords with `var` because it was breaking some older environments and tools. See [#147](https://github.com/Olical/react-faux-dom/issues/147) for example.
