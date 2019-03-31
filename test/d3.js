@@ -178,3 +178,29 @@ test('cloneNode', function (t) {
   t.equal(node.children[0].props['data-foo'], '1234')
   t.equal(node.children[1].props['data-foo'], '4321')
 })
+
+test('selection order', function (t) {
+  var el = mk()
+  var DATA = [1, 2, 3]
+  el.selectAll('.child')
+    .data(DATA, d => d)
+    .enter()
+    .append('div')
+    .classed('child', true)
+    .text(d => d)
+
+  t.plan(6)
+  t.equal(el.selectAll('.child').nodes()[0].textContent, DATA[0])
+  t.equal(el.selectAll('.child').nodes()[1].textContent, DATA[1])
+  t.equal(el.selectAll('.child').nodes()[2].textContent, DATA[2])
+
+  el.selectAll('.child')
+    .data(DATA.reverse(), d => d)
+    .order()
+    .exit()
+    .remove()
+
+  t.equal(el.selectAll('.child').nodes()[0].textContent, DATA[0])
+  t.equal(el.selectAll('.child').nodes()[1].textContent, DATA[1])
+  t.equal(el.selectAll('.child').nodes()[2].textContent, DATA[2])
+})
