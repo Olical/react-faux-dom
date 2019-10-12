@@ -111,10 +111,10 @@ test('stopDrawFauxDOM works as expected', function (t) {
   })
 })
 
-test('componentWillMount initialises correctly', function (t) {
+test('componentDidMount initialises correctly', function (t) {
   t.plan(2)
   var comp = Comp(true)
-  comp.componentWillMount()
+  comp.componentDidMount()
   t.deepEqual(comp.connectedFauxDOM, {})
   t.deepEqual(comp.animateFauxDOMUntil, 0)
 })

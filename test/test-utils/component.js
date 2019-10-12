@@ -19,7 +19,7 @@ function Component (noinit) {
   var comp = shallow(React.createElement(withFauxDOM(MockComponent)))
   var instance = comp.instance()
   instance.setState = sinon.spy()
-  noinit || instance.componentWillMount()
+  noinit || instance.componentDidMount()
   return instance
 }
 
